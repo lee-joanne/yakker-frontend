@@ -9,17 +9,21 @@
 
     - Authentication
 
-    1. As a **user** I **cannot edit/delete posts/comments that are not mine** so that **I can be assured that my posts are protected and can only be edited by me.**
+    1. As a **user** I can **easily log in** so that **I can quickly post, add more comments, or delete content if I wish.**
 
-    2. As a **user** I can **maintain my logged-in status** so that **I will not need to constantly log in when not on the website for a few hours, and can log out manually whenever I want to log out.**
+    2. As a **user** I can **easily log out** so that **I can have more security on my account.**
 
     3. As a **user** I can **sign up easily with just a username and password** so that **I have the ability to create posts or comments without having to share my email address.**
 
-    4. As a **user** I can **easily log out** so that **I can have more security on my account.**
+    4. As a **user** I **cannot edit/delete posts/comments/likes that are not mine** so that **I can be assured that my posts/comments/likes are protected and can only be changed by me.**
 
-    5. As a **user** I can **see whether I am logged in or not** so that **I will know if I will need to log in if I am not.**
+    5. As a **user** I can **only like/unlike other users' posts and comments** so that **I can only show my appreciation for other posts/comments and not cheat the system by liking my own posts/comments.**
 
-    6. As a **user** I can **easily log in** so that **I can quickly post, add more comments, or delete content if I wish.**
+    6. As a **user** I can **only follow other users** so that **I cannot cheat the system and follow myself and gain myself a new, false follower.**
+
+    7. As a **user** I can **see whether I am logged in or not** so that **I will know if I will need to log in if I am not.**
+
+    8. As a **user** I can **maintain my logged-in status** so that **I will not need to constantly log in when not on the website for a few hours, and can log out manually whenever I want to log out.**
 
     - Posts
 
@@ -45,17 +49,24 @@
 
     4. As a **user** I can **edit my comments** so that **have the possibility to remove or add more details to my existing comments.**
 
+    5. As a **user** I can **like comments** so that **I can share my appreciation for the comment.**
+
+    6. As a **user** I can **unlike comments** so that **I can change my mind about my positive feelings towards a comment.**
+
+
     - Navigation
 
-    1. As a **user** I can **go back or forward to the next page** so that **I can see the footer of the website and choose to move onto the next on the next page or go back a page to see more posts.**
+    1. As a **user** I can **a nice 500 page consistent with the site layout** so that **I can be communicated with if there are issues with the website's server or backend.**
 
-    2. As a **user** I can **see the navigation bar at the top of every page** so that **I can easily navigate between pages.**
+    2. As a **user** I can **have the navigation bar customed to my logged-in or out status** so that **I can have the options to log in or sign up when logged out, or have the options to create a post, view my profile, sign out, etc when logged in.**
 
-    3. As a **user** I can **navigate through pages quickly** so that **I can view content smoothly without the pages being refreshed**
+    3. As a **user** I can **a nice 404 page consistent with the site layout** so that **I can be communicated with if I have reached an invalid web page.**
 
-    4. As a **user** I can **a nice 404 page consistent with the site layout** so that **I can be communicated with if I have reached an invalid web page.**
+    4. As a **user** I can **navigate through pages quickly** so that **I can view content smoothly without the pages being refreshed**
 
-    5. As a **user** I can **have the navigation bar customed to my logged-in or out status** so that **I can have the options to log in or sign up when logged out, or have the options to create a post, view my profile, sign out, etc when logged in.**
+    5. As a **user** I can **see the navigation bar at the top of every page** so that **I can easily navigate between pages.**
+
+    6. As a **user** I can **go back or forward to the next page** so that **I can see the footer of the website and choose to move onto the next on the next page or go back a page to see more posts.**
 
     - Profile
 
@@ -70,6 +81,7 @@
     1. As a **user** I can **search for posts or users in a search box** so that **I can quickly find specific posts or users that I am wanting to look for.**
 
     2. As a **user** I can **always be notified when my interactions on the website are successful (creating posts/comments, liking/unliking posts, unfollowing/following users, logging in/out, etc** so that **I will always be informed of my actions and whether they are successful or not.**
+
 
 ### Design
 
