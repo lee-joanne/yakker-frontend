@@ -1,0 +1,9 @@
+.App {
+    font-family: 'Raleway', sans-serif;
+    background-color: #eff5fa;
+    min-height: 100vh;
+}
+
+.Main {
+    padding-top: 81px;
+}
