@@ -1,19 +1,36 @@
 import React from 'react';
 import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from '../assets/yakker-logo.png'
-import styles from '../styles/NavBar.module.css'
+import logo from '../assets/yakker-logo.png';
+import styles from '../styles/NavBar.module.css';
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+    let activeStyle = {
+        color: "#283132",
+    };
+
+    let unactiveStyle = {
+        color: "#336A86",
+    }
+
     return (
         <Navbar bg="white" expand="md" fixed="top" className={styles.NavBar}>
             <Container>
-                <Navbar.Brand><img src={logo} alt="yakker logo" height="50" /></Navbar.Brand>
+                <NavLink to="/">
+                    <Navbar.Brand><img src={logo} alt="yakker logo" height="50" /></Navbar.Brand>
+                </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto text-left">
-                        <Nav.Link className={styles.NavText} href="#home"><i class="fa-solid fa-house"></i> Home</Nav.Link>
-                        <Nav.Link className={styles.NavText} href="#link1"><i class="fa-solid fa-user-plus"></i> Sign Up</Nav.Link>
-                        <Nav.Link className={styles.NavText} href="#link"><i class="fa-solid fa-right-to-bracket"></i> Login</Nav.Link>
+                        <NavLink to="/" className={({ isActive }) =>
+                            isActive ? styles.Active : styles.NavText
+                        }><i class="fa-solid fa-house"></i> Home</NavLink>
+                        <NavLink to="signup" className={({ isActive }) =>
+                            isActive ? styles.Active : styles.NavText
+                        }><i class="fa-solid fa-user-plus"></i> Sign Up</NavLink>
+                        <NavLink to="login" className={({ isActive }) =>
+                            isActive ? styles.Active : styles.NavText
+                        }><i class="fa-solid fa-right-to-bracket"></i> Login</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,12 +1,24 @@
 .NavBar {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     font-family: 'Fredoka One', cursive;
+    color: #336A86 !important;
 }
 
 .NavText {
     color: #336A86 !important;
+    padding: 10px;
 }
 
 .NavText:hover {
     color: #8EAEC4 !important;
+    text-decoration: none;
+}
+
+.Active {
+    color: #283132 !important;
+    padding: 10px;
+}
+
+.Active:hover {
+    text-decoration: none;
 }
