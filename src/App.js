@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { Routes, Route } from 'react-router-dom';
 import './api/axiosDefaults';
 import SignUpForm from "./pages/auth/SignUpForm"
+import Footer from './footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route render={() => <h1>Sorry! Not found.</h1>} />
         </Routes>
       </Container>
+      <Footer />
     </div>
   );
 }
