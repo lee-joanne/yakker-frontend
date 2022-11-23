@@ -13,8 +13,28 @@ const SignUpForm = () => {
                         className={styles.LogoImage}
                         src={logoImage}
                     />
-                    <h1>Sign Up!</h1>
-                    <Row className="mt-5 justify-content-center">
+                    <h1 className="mb-3">Sign Up!</h1>
+                    <Row className="justify-content-center">
+                        <Form>
+                            <Form.Group controlId="username" className="text-left mb-2">
+                                <Form.Label className="d-none">Username</Form.Label>
+                                <Form.Control type="text" placeholder="Username" name="username" />
+                            </Form.Group>
+                            <Form.Group controlId="password" className="text-left mb-2">
+                                <Form.Label className="d-none">Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" name="password" />
+                            </Form.Group>
+                            <Form.Group controlId="password2" className="text-left">
+                                <Form.Label className="d-none">Password</Form.Label>
+                                <Form.Control type="password" placeholder="Confirm password" name="password2" />
+                            </Form.Group>
+                            <br />
+                            <Button className={btnStyles.btn} variant="primary" type="submit">
+                                Sign me up
+                            </Button>
+                        </Form>
+                    </Row>
+                    <Row className="mt-4 justify-content-center">
                         <p>Already have an account? <span>Login</span> instead!</p>
                     </Row>
                 </Col>
