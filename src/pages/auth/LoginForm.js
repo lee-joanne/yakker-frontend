@@ -5,8 +5,11 @@ import btnStyles from "../../styles/Button.module.css";
 import { Form, Button, Image, Row, Container, Col, Alert } from "react-bootstrap";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 
 const LoginForm = () => {
+    const setCurrentUser = useSetCurrentUser();
+
     const [loginData, setloginData] = useState({
         username: "",
         password: "",
@@ -28,7 +31,8 @@ const LoginForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('/dj-rest-auth/login/', loginData)
+            const { data } = await axios.post('/dj-rest-auth/login/', loginData)
+            setCurrentUser(data.user);
             navigate('/')
         } catch (err) {
             setErrors(err.response?.data)
