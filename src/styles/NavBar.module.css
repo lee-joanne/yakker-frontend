@@ -8,7 +8,8 @@
     padding: 10px;
 }
 
-.NavText:hover {
+.NavText:hover,
+.logOutStyle:hover {
     color: #8EAEC4 !important;
     text-decoration: none;
 }
@@ -20,4 +21,8 @@
 
 .Active:hover {
     text-decoration: none;
+}
+
+.logOutStyle {
+    color: #336A86;
 }
