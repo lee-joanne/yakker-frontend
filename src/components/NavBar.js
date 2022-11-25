@@ -22,18 +22,19 @@ const NavBar = () => {
         }
     };
 
-    const loggedInIcons = <>
-        <NavLink to="/feed" className={({ isActive }) =>
-            isActive ? styles.Active : styles.NavText
-        }><i class="fa-solid fa-globe"></i> Feed</NavLink>
-        <NavLink to="/post/create" className={({ isActive }) =>
-            isActive ? styles.Active : styles.NavText
-        }><i class="fa-solid fa-square-plus"></i> Create post</NavLink>
-        <NavLink to="/reyakked" className={({ isActive }) =>
-            isActive ? styles.Active : styles.NavText
-        }><i class="fa-solid fa-heart"></i> Reyakked</NavLink>
-        <NavLink className={styles.logOutStyle} onClick={handleLogOut}><i class="fa-solid fa-right-to-bracket"></i> Logout</NavLink>
-    </>
+    const loggedInIcons =
+        <>
+            <NavLink to="/feed" className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavText
+            }><i class="fa-solid fa-globe"></i> Feed</NavLink>
+            <NavLink to="/post/create" className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavText
+            }><i class="fa-solid fa-square-plus"></i> Create post</NavLink>
+            <NavLink to="/reyakked" className={({ isActive }) =>
+                isActive ? styles.Active : styles.NavText
+            }><i class="fa-solid fa-heart"></i> Reyakked</NavLink>
+            <NavLink className={styles.NavText} onClick={handleLogOut}><i class="fa-solid fa-right-to-bracket"></i> Log out</NavLink>
+        </>
     const loggedOutIcons = (
         <>
             <NavLink to="/signup" className={({ isActive }) =>
@@ -61,8 +62,8 @@ const NavBar = () => {
                         <NavLink to="/" className={({ isActive }) =>
                             isActive ? styles.Active : styles.NavText
                         }><i class="fa-solid fa-house"></i> Home</NavLink>
+                        {currentUser ? loggedInIcons : loggedOutIcons}
                     </Nav>
-                    {currentUser ? loggedInIcons : loggedOutIcons}
                 </Navbar.Collapse>
             </Container>
         </Navbar >
