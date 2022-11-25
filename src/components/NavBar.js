@@ -2,12 +2,26 @@ import React from 'react';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from '../assets/yakker-logo.png';
 import styles from '../styles/NavBar.module.css';
-import { NavLink } from "react-router-dom";
-import { useCurrentUser } from '../contexts/CurrentUserContext';
+import { useNavigate, NavLink } from "react-router-dom";
+import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import Avatar from './Avatar';
+import axios from "axios";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
+    const navigate = useNavigate();
+
+    const handleLogOut = async () => {
+        try {
+            await axios.post("dj-rest-auth/logout/");
+            setCurrentUser(null);
+            navigate('/')
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const loggedInIcons = <>
         <NavLink to="/feed" className={({ isActive }) =>
             isActive ? styles.Active : styles.NavText
@@ -15,10 +29,10 @@ const NavBar = () => {
         <NavLink to="/post/create" className={({ isActive }) =>
             isActive ? styles.Active : styles.NavText
         }><i class="fa-solid fa-square-plus"></i> Create post</NavLink>
-        <NavLink to="/reyakked" onClick={() => { }} className={({ isActive }) =>
+        <NavLink to="/reyakked" className={({ isActive }) =>
             isActive ? styles.Active : styles.NavText
         }><i class="fa-solid fa-heart"></i> Reyakked</NavLink>
-        <NavLink className={styles.logOutStyle} to="/logout"><i class="fa-solid fa-right-to-bracket"></i> Logout</NavLink>
+        <NavLink className={styles.logOutStyle} onClick={handleLogOut}><i class="fa-solid fa-right-to-bracket"></i> Logout</NavLink>
     </>
     const loggedOutIcons = (
         <>
