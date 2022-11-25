@@ -1,3 +1,5 @@
+// Code for NavBar navigation, expanding NavBar toggle event listener, and conditional
+// rendering taken from CI's Moments project.
 import React from 'react';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from '../assets/yakker-logo.png';
@@ -6,11 +8,13 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import Avatar from './Avatar';
 import axios from "axios";
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const navigate = useNavigate();
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
     const handleLogOut = async () => {
         try {
@@ -50,13 +54,13 @@ const NavBar = () => {
     )
 
     return (
-        <Navbar bg="white" expand="lg" fixed="top" className={styles.NavBar}>
+        <Navbar expanded={expanded} bg="white" expand="lg" fixed="top" className={styles.NavBar}>
             <Container>
                 <NavLink to="/">
                     <Navbar.Brand><img src={logo} alt="yakker logo" height="50" /></Navbar.Brand>
                 </NavLink>
                 {currentUser && yakfileUser}
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle onClick={() => setExpanded(!expanded)} ref={ref} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto text-left">
                         <NavLink to="/" className={({ isActive }) =>
