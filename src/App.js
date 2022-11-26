@@ -8,6 +8,7 @@ import SignUpForm from "./pages/auth/SignUpForm"
 import LoginForm from "./pages/auth/LoginForm"
 import Footer from './footer';
 import PostCreateForm from './pages/post/PostCreateForm';
+import Page404 from './components/Page404';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route exact path="/login" element={<LoginForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
           <Route exact path="/post/create" element={<PostCreateForm />} />
-          <Route render={() => <h1>Sorry! Not found.</h1>} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </Container>
       <Footer />
