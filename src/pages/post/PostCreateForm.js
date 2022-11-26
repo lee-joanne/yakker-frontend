@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
 import Asset from '../../components/Asset';
 import styles from "./../../styles/PostCreateEditForm.module.css";
@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 const PostCreateForm = () => {
+
+    const [errors, setErrors] = useState({});
 
     const currentUser = useCurrentUser();
 
@@ -45,8 +47,8 @@ const PostCreateForm = () => {
         event.preventDefault();
         const formData = new FormData();
 
-        formData.append("title", caption);
-        formData.append("content", category);
+        formData.append("title", title);
+        formData.append("content", content);
         formData.append("image", imageInput.current.files[0]);
 
         try {
@@ -60,9 +62,6 @@ const PostCreateForm = () => {
         }
     };
 
-
-    // const [errors, setErrors] = useState({});
-
     const textFields = (
         <div className="text-center">
             <Form>
@@ -70,17 +69,30 @@ const PostCreateForm = () => {
                     <Form.Label className={styles.FormText}>Title</Form.Label>
                     <Form.Control type="text" placeholder="Add a nice title here" name="title" value={title} onChange={handleChange} />
                 </Form.Group>
+                {errors.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
                 <Form.Group className="mb-3">
                     <Form.Label className={styles.FormText}>Content</Form.Label>
                     <Form.Control as="textarea" rows={6} name="content" placeholder={`What's on ${currentUser.username}'s mind?`} value={content} onChange={handleChange} />
                 </Form.Group>
+                {errors.content?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
             </Form>
-            <Button type="submit" className={btnStyles.btn}>Create Post</Button>
+            <Button type="submit" className={`${btnStyles.btn} mb-2`}>Create Post</Button>
         </div>
     )
 
     return (
         <Form onSubmit={handleSubmit}>
+            <div>
+                <Button onClick={() => navigate(-1)} className={`${btnStyles.btn} mt-2`}><i class="fa-solid fa-arrow-left"></i> Go back</Button>
+            </div>
             <Row className="mt-3">
                 <Col lg={6}>
                     <Container className={`${styles.ContainerBox} bg-white p-5`}>
@@ -100,6 +112,11 @@ const PostCreateForm = () => {
                             )}
                             <Form.Control type="file" className="p-1" onChange={handleChangeImage} accept="image/*" ref={imageInput} />
                         </Form.Group>
+                        {errors.image?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
                     </Container>
                 </Col>
                 <Col lg={5}>
