@@ -12,3 +12,10 @@ h1 {
     font-family: 'Fredoka One', cursive;
     color: #336A86;
 }
+
+/* CSS code on Image taken from CI's Moment's project */
+.Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+}

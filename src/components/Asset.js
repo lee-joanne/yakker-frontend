@@ -6,7 +6,7 @@ const Asset = ({ spinner, src, height, message }) => {
         <div>
             {spinner && <Spinner animation="grow" variant="info" />}
             {src && <img src={src} alt={message} height={height} width={height} />}
-            {message && <p>{message}</p>}
+            {message && <p className="mt-3">{message}</p>}
         </div>
     )
 };
