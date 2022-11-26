@@ -9,6 +9,7 @@ import LoginForm from "./pages/auth/LoginForm"
 import Footer from './footer';
 import PostCreateForm from './pages/post/PostCreateForm';
 import Page404 from './components/Page404';
+import DetailPostPage from './pages/post/DetailPostPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/login" element={<LoginForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
           <Route exact path="/post/create" element={<PostCreateForm />} />
+          <Route exact path="post/:id" element={<DetailPostPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Container>
