@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Container, Col, Image } from "react-bootstrap";
+import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
 import Asset from '../../components/Asset';
 import styles from "./../../styles/PostCreateEditForm.module.css";
 import upload from "./../../assets/upload.png";
 import btnStyles from "./../../styles/Button.module.css";
 import appStyles from "./../../App.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useNavigate } from 'react-router-dom';
+import { axiosReq } from '../../api/axiosDefaults';
 
 const PostCreateForm = () => {
 
     const currentUser = useCurrentUser();
+
+    const imageInput = useRef(null);
 
     const [postData, setPostData] = useState({
         title: "",
@@ -17,6 +21,8 @@ const PostCreateForm = () => {
         image: ""
     });
     const { title, content, image } = postData;
+
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         setPostData({
@@ -34,6 +40,26 @@ const PostCreateForm = () => {
             });
         }
     };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+
+        formData.append("title", caption);
+        formData.append("content", category);
+        formData.append("image", imageInput.current.files[0]);
+
+        try {
+            const { data } = await axiosReq.post("/post/", formData);
+            navigate(`/post/${data.id}`);
+        } catch (err) {
+            console.log(err);
+            if (err.response?.status !== 401) {
+                setErrors(err.response?.data);
+            }
+        }
+    };
+
 
     // const [errors, setErrors] = useState({});
 
@@ -54,7 +80,7 @@ const PostCreateForm = () => {
     )
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Row className="mt-3">
                 <Col lg={6}>
                     <Container className={`${styles.ContainerBox} bg-white p-5`}>
@@ -72,7 +98,7 @@ const PostCreateForm = () => {
                                     <Asset src={upload} message="Select 'choose file' to upload your image!" height={50} width={50} />
                                 </Form.Label>
                             )}
-                            <Form.Control type="file" className="p-1" onChange={handleChangeImage} accept="image/*" />
+                            <Form.Control type="file" className="p-1" onChange={handleChangeImage} accept="image/*" ref={imageInput} />
                         </Form.Group>
                     </Container>
                 </Col>
