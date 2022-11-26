@@ -1,0 +1,12 @@
+.Content {
+    font-family: 'Raleway', sans-serif;
+}
+
+.YakfileLink {
+    color: black;
+}
+
+.YakfileLink:hover {
+    text-decoration: none;
+    color: #8EAEC4;
+}
