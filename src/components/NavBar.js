@@ -50,7 +50,7 @@ const NavBar = () => {
         </>
     );
     const yakfileUser = (
-        <Navbar.Brand><Avatar src={currentUser?.yakfile_image} yakfile={currentUser?.username} height={35} /></Navbar.Brand>
+        <Navbar.Brand><Avatar src={currentUser && currentUser.yakfile_image} yakfile={currentUser && currentUser.username} height={35} /></Navbar.Brand>
     )
 
     return (
