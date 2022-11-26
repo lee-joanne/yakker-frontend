@@ -1,3 +1,4 @@
+// Code on toggle taken from CI's Moment's Project.
 import { useEffect, useRef, useState } from "react";
 
 const useClickOutsideToggle = () => {
