@@ -69,7 +69,7 @@ const PostCreateForm = () => {
                                     <Asset src={upload} message="Select 'choose file' to upload your image!" height={50} width={50} />
                                 </Form.Label>
                             )}
-                            <Form.Control type="file" onChange={handleChangeImage} accept="image/*" />
+                            <Form.Control type="file" className="p-1" onChange={handleChangeImage} accept="image/*" />
                         </Form.Group>
                     </Container>
                 </Col>
