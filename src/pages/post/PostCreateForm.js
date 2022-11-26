@@ -5,8 +5,11 @@ import styles from "./../../styles/PostCreateEditForm.module.css";
 import upload from "./../../assets/upload.png";
 import btnStyles from "./../../styles/Button.module.css";
 import appStyles from "./../../App.module.css"
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const PostCreateForm = () => {
+
+    const currentUser = useCurrentUser();
 
     const [postData, setPostData] = useState({
         title: "",
@@ -43,7 +46,7 @@ const PostCreateForm = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label className={styles.FormText}>Content</Form.Label>
-                    <Form.Control as="textarea" rows={6} name="content" placeholder="Yak away, my friend" value={content} onChange={handleChange} />
+                    <Form.Control as="textarea" rows={6} name="content" placeholder={`What's on ${currentUser.username}'s mind?`} value={content} onChange={handleChange} />
                 </Form.Group>
             </Form>
             <Button type="submit" className={btnStyles.btn}>Create Post</Button>
