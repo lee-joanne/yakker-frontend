@@ -5,6 +5,7 @@ import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import Avatar from "./../../components/Avatar"
 import { Link } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
+import axios from 'axios';
 
 const Post = (props) => {
     const {
@@ -42,6 +43,22 @@ const Post = (props) => {
         }
     }
 
+    const handleUnReyakks = async () => {
+        try {
+            await axios.delete(`/post_reyakks/${post_reyakks_id}`);
+            setPosts((prevPosts) => ({
+                ...prevPosts,
+                results: prevPosts.results.map((post) => {
+                    return post.id === id
+                        ? { ...post, reyakks_count: post.reyakks_count - 1, post_reyakks_id: null }
+                        : post;
+                }),
+            }));
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <Card>
             <Card.Header>
@@ -65,7 +82,7 @@ const Post = (props) => {
                             <i className="far fa-heart" />
                         </OverlayTrigger>
                     ) : post_reyakks_id ? (
-                        <span onClick={() => { }}><i className={`fa-solid fa-heart ${styles.Reyakked}`}></i></span>
+                        <span onClick={handleUnReyakks}><i className={`fa-solid fa-heart ${styles.Reyakked}`}></i></span>
                     ) : currentUser ? (
                         <span onClick={handleReyakks}><i className={`far fa-heart ${styles.ReyakkHover}`} /></span>
                     ) : (
