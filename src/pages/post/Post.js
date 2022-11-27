@@ -4,6 +4,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import Avatar from "./../../components/Avatar"
 import { Link } from 'react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Post = (props) => {
     const {
@@ -19,10 +20,27 @@ const Post = (props) => {
         image,
         updated_at,
         detailedPostPage,
+        setPosts,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_author = currentUser?.username === author
+
+    const handleReyakks = async () => {
+        try {
+            const { data } = await axiosRes.post('/post_reyakks/', { post: id });
+            setPosts((prevPosts) => ({
+                ...prevPosts,
+                results: prevPosts.results.map((post) => {
+                    return post.id === id
+                        ? { ...post, reyakks_count: post.reyakks_count + 1, post_reyakks_id: data.id }
+                        : post;
+                }),
+            }));
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <Card>
@@ -47,14 +65,14 @@ const Post = (props) => {
                             <i className="far fa-heart" />
                         </OverlayTrigger>
                     ) : post_reyakks_id ? (
-                        <span onClick={() => { }}><i className="far fa-heart" /></span>
+                        <span onClick={() => { }}><i className={`fa-solid fa-heart ${styles.Reyakked}`}></i></span>
                     ) : currentUser ? (
-                        <span onClick={() => { }}><i className="far fa-heart" /></span>
+                        <span onClick={handleReyakks}><i className={`far fa-heart ${styles.ReyakkHover}`} /></span>
                     ) : (
                         <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like posts!</Tooltip>}><i className="far fa-heart" /></OverlayTrigger>
                     )}
                     {reyakks_count}
-                    {comment_count}
+                    <i className={`fa-regular fa-comment ml-1`}></i>{comment_count}
                 </div>
             </Card.Body>
         </Card >
