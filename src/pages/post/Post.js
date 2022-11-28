@@ -60,7 +60,7 @@ const Post = (props) => {
     }
 
     return (
-        <Card>
+        <Card className="mb-3">
             <Card.Header>
                 <Row>
                     <Col><Link className={styles.YakfileLink} to={`/yakfile/${yakfile_id}`}><Avatar src={yakfile_image} height={30} />{author}</Link>

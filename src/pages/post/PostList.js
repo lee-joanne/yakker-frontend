@@ -7,7 +7,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Asset from '../../components/Asset';
 import NoResults from "../../assets/no-results.png"
 
-const PostList = (message, filter = "") => {
+const PostList = ({ message, filter = "" }) => {
     const [posts, setPosts] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -38,7 +38,9 @@ const PostList = (message, filter = "") => {
                                     <Post key={post.id} {...post} setPosts={setPosts} />
                                 ))
                             ) : (
-                                <Asset src={NoResults} message={message} />
+                                <Container className="text-center d-flex justify-content-center p-4">
+                                    <Asset src={NoResults} message={message} height={100} width={100} />
+                                </Container>
                             )}
                         </>
                     ) : (

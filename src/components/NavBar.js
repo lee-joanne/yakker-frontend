@@ -28,9 +28,9 @@ const NavBar = () => {
 
     const loggedInIcons =
         <>
-            <NavLink to="/explore" className={({ isActive }) =>
+            <NavLink to="/feed" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
-            }><i class="fa-solid fa-globe"></i> Explore</NavLink>
+            }><i class="fa-solid fa-rss"></i> Feed</NavLink>
             <NavLink to="/post/create" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
             }><i class="fa-solid fa-square-plus"></i> Create post</NavLink>
