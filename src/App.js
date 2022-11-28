@@ -10,6 +10,7 @@ import Footer from './footer';
 import PostCreateForm from './pages/post/PostCreateForm';
 import Page404 from './components/Page404';
 import DetailPostPage from './pages/post/DetailPostPage';
+import ExplorePage from './pages/post/ExplorePage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Container className={styles.Main}>
         <Routes>
           <Route exact path="/" render={() => <h1>Home</h1>} />
+          <Route exact path="/explore" element={<ExplorePage />} />
           <Route exact path="/login" element={<LoginForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
           <Route exact path="/post/create" element={<PostCreateForm />} />
