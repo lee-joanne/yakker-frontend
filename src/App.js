@@ -22,8 +22,9 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Routes>
-          <Route exact path="/" render={() => <h1>Home</h1>} />
-          <Route exact path="/explore" element={<PostList message="No results found. Try using other search keywords?" />} />
+          <Route exact path="/" element={<PostList message="No results found. Try using other search keywords perhaps?" filter={`author__followed_user__author__yakfile=${yakfile_id}&`} />} />
+          <Route exact path="/explore" element={<PostList message="No results found. Try using other search keywords or follow a user." />} />
+          <Route exact path="/reyakked" element={<PostList message="No results found. Try using other search keywords or like a post." filter={`post_reyakker__post_reyakker__yakfile=${yakfile_id}&ordering=-post_reyakker__created_at&`} />} />
           <Route exact path="/login" element={<LoginForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
           <Route exact path="/post/create" element={<PostCreateForm />} />
