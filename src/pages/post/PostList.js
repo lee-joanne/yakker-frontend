@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ExplorePage = () => {
+const PostList = () => {
     return (
         <div>ExplorePage</div>
     )
 }
 
-export default ExplorePage
+export default PostList
