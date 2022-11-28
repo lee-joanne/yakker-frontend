@@ -2,7 +2,8 @@ import React from 'react';
 import styles from "../../styles/Post.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
-import Avatar from "./../../components/Avatar"
+import Avatar from "./../../components/Avatar";
+import shadowStyles from "../../App.module.css";
 import { Link } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import axios from 'axios';
@@ -60,7 +61,7 @@ const Post = (props) => {
     }
 
     return (
-        <Card className="mb-3">
+        <Card className={`mb-3 ${shadowStyles.Shadow}`}>
             <Card.Header>
                 <Row>
                     <Col><Link className={styles.YakfileLink} to={`/yakfile/${yakfile_id}`}><Avatar src={yakfile_image} height={30} />{author}</Link>

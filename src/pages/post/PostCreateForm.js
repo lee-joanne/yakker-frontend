@@ -95,7 +95,7 @@ const PostCreateForm = () => {
             </div>
             <Row className="mt-3">
                 <Col lg={6}>
-                    <Container className={`${styles.ContainerBox} bg-white p-5`}>
+                    <Container className={`${appStyles.Shadow} bg-white p-5 mt-3`}>
                         <Form.Group className="text-center">
                             {image ? (
                                 <>
@@ -120,7 +120,7 @@ const PostCreateForm = () => {
                     </Container>
                 </Col>
                 <Col lg={5}>
-                    <Container className={`${styles.ContainerBox} bg-white p-2`}>
+                    <Container className={`${appStyles.Shadow} bg-white p-2 mt-3`}>
                         {textFields}
                     </Container>
                 </Col>

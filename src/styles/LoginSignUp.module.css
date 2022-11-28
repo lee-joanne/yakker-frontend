@@ -3,10 +3,6 @@
     height: 55px;
 }
 
-.ContainerBox {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
 .Link {
     color: #336A86;
     font-weight: bold;

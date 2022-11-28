@@ -14,6 +14,10 @@ h1 {
     color: #336A86;
 }
 
+.Shadow {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
 /* CSS code on Image taken from CI's Moment's project */
 .Image {
     max-height: 40vh;

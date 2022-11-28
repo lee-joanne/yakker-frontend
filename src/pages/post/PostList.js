@@ -3,6 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { useLocation } from 'react-router-dom';
 import Post from "./Post";
 import styles from "./../../styles/PostList.module.css";
+import shadowStyles from "../../App.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from '../../components/Asset';
 import NoResults from "../../assets/no-results.png"
@@ -38,7 +39,7 @@ const PostList = ({ message, filter = "" }) => {
                                     <Post key={post.id} {...post} setPosts={setPosts} />
                                 ))
                             ) : (
-                                <Container className="text-center d-flex justify-content-center p-4">
+                                <Container className={`text-center d-flex justify-content-center p-4 bg-white ${shadowStyles.Shadow}`}>
                                     <Asset src={NoResults} message={message} height={100} width={100} />
                                 </Container>
                             )}

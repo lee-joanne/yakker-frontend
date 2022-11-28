@@ -23,7 +23,7 @@ function App() {
       <Container className={styles.Main}>
         <Routes>
           <Route exact path="/" element={<PostList message="No results found. Try using other search keywords?" />} />
-          <Route exact path="/feed" element={<PostList message="No results found. Try using other search keywords or follow a user?" filter={`author__followed_user__author__yakfile=${yakfile_id}&`} />} />
+          <Route exact path="/feed" element={<PostList message="No results found. Try using other search keywords or follow a user." filter={`author__followed_user__author__yakfile=${yakfile_id}&`} />} />
           <Route exact path="/reyakked" element={<PostList message="No results found. Try using other search keywords or like a post." filter={`post_reyakker__post_reyakker__yakfile=${yakfile_id}&ordering=-post_reyakker__created_at&`} />} />
           <Route exact path="/login" element={<LoginForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
