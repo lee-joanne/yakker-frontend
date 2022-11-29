@@ -62,32 +62,6 @@ const PostCreateForm = () => {
         }
     };
 
-    const textFields = (
-        <div className="text-center">
-            <Form>
-                <Form.Group className="mb-3">
-                    <Form.Label className={styles.HeaderText}>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Add a nice title here" name="title" value={title} onChange={handleChange} />
-                </Form.Group>
-                {errors.title?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                        {message}
-                    </Alert>
-                ))}
-                <Form.Group className="mb-3">
-                    <Form.Label className={styles.HeaderText}>Content</Form.Label>
-                    <Form.Control as="textarea" rows={6} name="content" placeholder={`What's on ${currentUser.username}'s mind?`} value={content} onChange={handleChange} />
-                </Form.Group>
-                {errors.content?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                        {message}
-                    </Alert>
-                ))}
-            </Form>
-            <Button type="submit" className={`${btnStyles.btn} mb-2`}>Create Post</Button>
-        </div>
-    )
-
     return (
         <Form onSubmit={handleSubmit}>
             <div>
@@ -121,11 +95,32 @@ const PostCreateForm = () => {
                 </Col>
                 <Col lg={5}>
                     <Container className={`${appStyles.Shadow} bg-white p-2 mt-3`}>
-                        {textFields}
+                        <Form.Group className="mb-3">
+                            <Form.Label className={styles.HeaderText}>Title</Form.Label>
+                            <Form.Control type="text" placeholder="Add a nice title here" name="title" value={title} onChange={handleChange} />
+                        </Form.Group>
+                        {errors.title?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
+                        <Form.Group className="mb-3">
+                            <Form.Label className={styles.HeaderText}>Content</Form.Label>
+                            <Form.Control as="textarea" rows={6} name="content" placeholder={`What's on ${currentUser.username}'s mind?`} value={content} onChange={handleChange} />
+                        </Form.Group>
+                        {errors.content?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
+                        <div className='text-center'>
+                            <Button type="submit" className={`${btnStyles.btn} mb-2`}>Create Post</Button>
+                        </div>
                     </Container>
                 </Col>
             </Row>
         </Form >
+
     )
 }
 
