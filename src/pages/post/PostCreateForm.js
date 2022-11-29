@@ -65,7 +65,7 @@ const PostCreateForm = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <div>
-                <Button onClick={() => navigate(-1)} className={`${btnStyles.btn} mt-2`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
+                <Button onClick={() => navigate(-1)} className={`${btnStyles.btn}`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
             </div>
             <Row className="mt-3">
                 <Col lg={6}>
