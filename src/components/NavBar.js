@@ -30,23 +30,23 @@ const NavBar = () => {
         <>
             <NavLink to="/feed" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
-            }><i class="fa-solid fa-rss"></i> Feed</NavLink>
+            }><i className="fa-solid fa-rss"></i> Feed</NavLink>
             <NavLink to="/post/create" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
-            }><i class="fa-solid fa-square-plus"></i> Create post</NavLink>
+            }><i className="fa-solid fa-square-plus"></i> Create post</NavLink>
             <NavLink to="/reyakked" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
-            }><i class="fa-solid fa-heart"></i> Reyakked</NavLink>
-            <NavLink className={styles.NavText} onClick={handleLogOut}><i class="fa-solid fa-right-to-bracket"></i> Log out</NavLink>
+            }><i className="fa-solid fa-heart"></i> Reyakked</NavLink>
+            <NavLink className={styles.NavText} onClick={handleLogOut}><i className="fa-solid fa-right-to-bracket"></i> Log out</NavLink>
         </>
     const loggedOutIcons = (
         <>
             <NavLink to="/signup" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
-            }><i class="fa-solid fa-user-plus"></i> Sign Up</NavLink>
+            }><i className="fa-solid fa-user-plus"></i> Sign Up</NavLink>
             <NavLink to="/login" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
-            }><i class="fa-solid fa-right-to-bracket"></i> Login</NavLink>
+            }><i className="fa-solid fa-right-to-bracket"></i> Login</NavLink>
         </>
     );
     const yakfileUser = (
@@ -65,7 +65,7 @@ const NavBar = () => {
                     <Nav className="ml-auto text-left">
                         <NavLink to="/" className={({ isActive }) =>
                             isActive ? styles.Active : styles.NavText
-                        }><i class="fa-solid fa-house"></i> Home</NavLink>
+                        }><i className="fa-solid fa-house"></i> Home</NavLink>
                         {currentUser ? loggedInIcons : loggedOutIcons}
                     </Nav>
                 </Navbar.Collapse>

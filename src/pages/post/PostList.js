@@ -5,7 +5,7 @@ import Post from "./Post";
 import styles from "./../../styles/PostCreateEditFormList.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from '../../components/Asset';
-import NoResults from "../../assets/no-results.png"
+import NoResults from "../../assets/no-results.png";
 
 const PostList = ({ message, filter = "" }) => {
     const [posts, setPosts] = useState({ results: [] });
@@ -33,7 +33,7 @@ const PostList = ({ message, filter = "" }) => {
             fetchPosts()
         }, 1000)
         return () => {
-            clearTimeout(timer)
+            clearTimeout(timer);
         }
     }, [filter, search, pathname])
 
