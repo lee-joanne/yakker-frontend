@@ -13,6 +13,7 @@
 
 .ReyakkHover:hover {
     color: #800020;
+    cursor: pointer;
 }
 
 .Reyakked {

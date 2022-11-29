@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Form } from "react-bootstrap";
 import { useLocation } from 'react-router-dom';
 import Post from "./Post";
 import styles from "./../../styles/PostCreateEditFormList.module.css";
@@ -30,6 +30,10 @@ const PostList = ({ message, filter = "" }) => {
         <Row>
             <Col className={styles.HeaderText} lg={8}>
                 <p>Popular profiles</p>
+                <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}></i>
+                <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
+                    <Form.Control type="text" placeholder="Search posts based on author, content, or title!" />
+                </Form>
                 <Container>
                     {hasLoaded ? (
                         <>
