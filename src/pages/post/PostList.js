@@ -12,19 +12,30 @@ const PostList = ({ message, filter = "" }) => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
 
+    const [search, setSearch] = useState("");
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value)
+    }
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const { data } = await axiosReq.get(`/post/?${filter}`)
+                const { data } = await axiosReq.get(`/post/?${filter}search=${search}`)
                 setPosts(data)
                 setHasLoaded(true)
             } catch (err) {
                 console.log(err)
             }
         }
-        setHasLoaded(false)
-        fetchPosts()
-    }, [filter, pathname])
+        setHasLoaded(false);
+        const timer = setTimeout(() => {
+            fetchPosts()
+        }, 1000)
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [filter, search, pathname])
 
     return (
         <Row>
@@ -32,7 +43,8 @@ const PostList = ({ message, filter = "" }) => {
                 <p>Popular profiles</p>
                 <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}></i>
                 <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
-                    <Form.Control type="text" placeholder="Search posts based on author, content, or title!" />
+                    <Form.Control type="text" placeholder="Search posts based on author, content, or title!"
+                        value={search} onChange={handleSearch} />
                 </Form>
                 <Container>
                     {hasLoaded ? (
