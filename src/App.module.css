@@ -9,7 +9,8 @@
     padding-bottom: 85px;
 }
 
-h1 {
+h1,
+.HeadingFont {
     font-family: 'Fredoka One', cursive;
     color: #336A86;
 }

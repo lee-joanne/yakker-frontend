@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
 import Asset from '../../components/Asset';
-import styles from "./../../styles/PostCreateEditForm.module.css";
+import styles from "./../../styles/PostCreateEditFormList.module.css";
 import upload from "./../../assets/upload.png";
 import btnStyles from "./../../styles/Button.module.css";
 import appStyles from "./../../App.module.css"

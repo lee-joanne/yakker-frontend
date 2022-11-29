@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from "../../api/axiosDefaults";
-import styles from "./../../styles/PostCreateEditForm.module.css";
+import styles from "./../../styles/PostCreateEditFormList.module.css";
 import Post from './Post';
 
 const DetailPostPage = () => {
