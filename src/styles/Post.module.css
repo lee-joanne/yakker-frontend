@@ -11,7 +11,8 @@
     color: #8EAEC4;
 }
 
-.ReyakkHover:hover {
+.ReyakkHover:hover,
+.Reyakked:hover {
     color: #800020;
     cursor: pointer;
 }

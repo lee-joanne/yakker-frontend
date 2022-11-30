@@ -1,21 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
-import Asset from '../../components/Asset';
 import styles from "./../../styles/PostCreateEditFormList.module.css";
-import upload from "./../../assets/upload.png";
 import btnStyles from "./../../styles/Button.module.css";
 import appStyles from "./../../App.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
 const EditPostForm = () => {
 
     const [errors, setErrors] = useState({});
-
     const currentUser = useCurrentUser();
-
     const imageInput = useRef(null);
+    const navigate = useNavigate();
+    const { id } = useParams();
 
     const [postData, setPostData] = useState({
         title: "",
@@ -24,7 +22,18 @@ const EditPostForm = () => {
     });
     const { title, content, image } = postData;
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const { data } = await axiosReq.get(`/post/${id}`)
+                const { title, content, image, is_author } = data
+                is_author ? setPostData({ title, content, image }) : navigate(-1)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        handleMount();
+    }, [navigate, id])
 
     const handleChange = (event) => {
         setPostData({
@@ -49,11 +58,13 @@ const EditPostForm = () => {
 
         formData.append("title", title);
         formData.append("content", content);
-        formData.append("image", imageInput.current.files[0]);
+        if (imageInput?.current?.files[0]) {
+            formData.append("image", imageInput.current.files[0]);
+        }
 
         try {
-            const { data } = await axiosReq.post("/post/", formData);
-            navigate(`/post/${data.id}`);
+            await axiosReq.put(`/post/${id}`, formData);
+            navigate(`/post/${id}`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
@@ -68,19 +79,9 @@ const EditPostForm = () => {
                 <Col lg={6}>
                     <Container className={`${appStyles.Shadow} bg-white p-5 mt-3`}>
                         <Form.Group className="text-center">
-                            {image ? (
-                                <>
-                                    <figure>
-                                        <Image src={image} className={appStyles.Image} rounded />
-                                    </figure>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image-upload">
-                                    <Asset src={upload} message="Select 'choose file' to upload your image!" height={50} width={50} />
-                                </Form.Label>
-                            )}
+                            <figure>
+                                <Image src={image} className={appStyles.Image} rounded />
+                            </figure>
                             <Form.Control type="file" className="p-1" onChange={handleChangeImage} accept="image/*" ref={imageInput} />
                         </Form.Group>
                         {errors.image?.map((message, idx) => (
@@ -112,7 +113,7 @@ const EditPostForm = () => {
                         ))}
                         <div className='text-center mb-2'>
                             <Button onClick={() => navigate(-1)} className={`${btnStyles.btn}`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
-                            <Button type="submit" className={`${btnStyles.btn} ml-2`}>Create Post</Button>
+                            <Button type="submit" className={`${btnStyles.btn} ml-2`}>Edit Post</Button>
                         </div>
                     </Container>
                 </Col>

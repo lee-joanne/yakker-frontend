@@ -59,11 +59,11 @@ const Post = (props) => {
         } catch (err) {
             console.log(err)
         }
-    }
+    };
 
     const handleEdit = () => {
         navigate(`/post/${id}/edit`);
-    }
+    };
 
     const handleDelete = async () => {
         try {
