@@ -83,8 +83,9 @@ const Post = (props) => {
                         <div className="ml-2 pt-1">
                             {is_author && (
                                 <>
-                                    <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit post</Tooltip>}><i className={`fa-solid fa-pen-to-square ${styles.EditDeleteIcon}`} onClick={handleEdit}></i></OverlayTrigger>
-                                    <OverlayTrigger placement="top" overlay={<Tooltip>Click to delete post</Tooltip>}><i className={`fa-solid fa-trash ml-1 ${styles.EditDeleteIcon}`} onClick={handleDelete}></i></OverlayTrigger>
+                                    <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit post</Tooltip>}><i className={`fa-solid fa-pen-to-square ml-1 ${styles.EditDeleteIcon}`} onClick={handleEdit}></i></OverlayTrigger>
+                                    <span className="text-dark ml-1 mr-1"> | </span>
+                                    <OverlayTrigger placement="top" overlay={<Tooltip>Click to delete post</Tooltip>}><i className={`fa-solid fa-trash ${styles.EditDeleteIcon}`} onClick={handleDelete}></i></OverlayTrigger>
                                 </>
                             )}
                         </div>

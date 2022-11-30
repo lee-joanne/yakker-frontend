@@ -24,3 +24,7 @@
     cursor: pointer;
     color: #8EAEC4;
 }
+
+.EditDeleteIcon {
+    color: grey;
+}
