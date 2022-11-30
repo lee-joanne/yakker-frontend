@@ -4,7 +4,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import Avatar from "./../../components/Avatar";
 import shadowStyles from "../../App.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import axios from 'axios';
 
@@ -19,14 +19,15 @@ const Post = (props) => {
         post_reyakks_id,
         title,
         content,
+        detailPostPage,
         image,
         updated_at,
-        detailedPostPage,
         setPosts,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_author = currentUser?.username === author
+    const navigate = useNavigate();
 
     const handleReyakks = async () => {
         try {
@@ -60,13 +61,32 @@ const Post = (props) => {
         }
     }
 
+    const handleEdit = () => {
+        navigate(`/post/${id}/edit`);
+    }
+
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/post/${id}/`);
+            detailPostPage ? navigate(-1) : navigate(0);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <Card className={`mb-3 ${shadowStyles.Shadow}`}>
             <Card.Header>
                 <Row>
-                    <Col><Link className={styles.YakfileLink} to={`/yakfile/${yakfile_id}`}><Avatar src={yakfile_image} height={30} />{author}</Link>
-                        <div>
-                            {is_author && detailedPostPage && "..."}
+                    <Col>
+                        <Link className={styles.YakfileLink} to={`/yakfile/${yakfile_id}`}><Avatar src={yakfile_image} height={30} />{author}</Link>
+                        <div className="ml-2 pt-1">
+                            {is_author && (
+                                <>
+                                    <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit post</Tooltip>}><i className={`fa-solid fa-pen-to-square ${styles.EditDeleteIcon}`} onClick={handleEdit}></i></OverlayTrigger>
+                                    <OverlayTrigger placement="top" overlay={<Tooltip>Click to delete post</Tooltip>}><i className={`fa-solid fa-trash ml-1 ${styles.EditDeleteIcon}`} onClick={handleDelete}></i></OverlayTrigger>
+                                </>
+                            )}
                         </div>
                     </Col>
                     <Col><div>Updated at: {updated_at}</div></Col>

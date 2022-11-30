@@ -19,3 +19,8 @@
 .Reyakked {
     color: #800020;
 }
+
+.EditDeleteIcon:hover {
+    cursor: pointer;
+    color: #8EAEC4;
+}
