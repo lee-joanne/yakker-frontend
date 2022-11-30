@@ -19,7 +19,7 @@ const Post = (props) => {
         post_reyakks_id,
         title,
         content,
-        detailPostPage,
+        detailedPostPage,
         image,
         updated_at,
         setPosts,
@@ -67,8 +67,8 @@ const Post = (props) => {
 
     const handleDelete = async () => {
         try {
-            await axiosRes.delete(`/post/${id}/`);
-            detailPostPage ? navigate(-1) : navigate(0);
+            await axiosRes.delete(`/post/${id}`);
+            detailedPostPage ? navigate(-1) : navigate(0);
         } catch (err) {
             console.log(err);
         }
@@ -89,7 +89,7 @@ const Post = (props) => {
                             )}
                         </div>
                     </Col>
-                    <Col><div>Updated at: {updated_at}</div></Col>
+                    <Col><div className="text-right">Updated at: {updated_at}</div></Col>
                 </Row>
             </Card.Header>
             <Card.Img variant="top" src={image} />
