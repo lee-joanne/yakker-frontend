@@ -1,3 +1,4 @@
+// Post functionality credit goes to CI's Moments Project
 import React from 'react';
 import styles from "../../styles/Post.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";

@@ -1,3 +1,4 @@
+// Creating post functionality credit goes to CI's Moments Project
 import React, { useRef, useState } from 'react';
 import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
 import Asset from '../../components/Asset';

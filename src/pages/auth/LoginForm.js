@@ -1,3 +1,4 @@
+// Login form functionality credit goes to CI's Moments Project
 import React, { useState } from 'react';
 import styles from "../../styles/LoginSignUp.module.css";
 import logoImage from '../../assets/yakker-logo-image.png';

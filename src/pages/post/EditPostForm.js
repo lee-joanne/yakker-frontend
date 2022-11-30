@@ -1,3 +1,4 @@
+// Editing post functionality credit goes to CI's Moments Project
 import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
 import styles from "./../../styles/PostCreateEditFormList.module.css";

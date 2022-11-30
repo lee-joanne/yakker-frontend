@@ -1,3 +1,4 @@
+// Detail post functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';

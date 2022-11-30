@@ -1,3 +1,4 @@
+// Post list functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Container, Form } from "react-bootstrap";
 import { useLocation } from 'react-router-dom';
