@@ -9,7 +9,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { useNavigate } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 
-const PostCreateForm = () => {
+const EditPostForm = () => {
 
     const [errors, setErrors] = useState({});
 
@@ -122,4 +122,4 @@ const PostCreateForm = () => {
     )
 }
 
-export default PostCreateForm
+export default EditPostForm

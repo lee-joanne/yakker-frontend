@@ -12,6 +12,7 @@ import Page404 from './components/Page404';
 import DetailPostPage from './pages/post/DetailPostPage';
 import PostList from './pages/post/PostList';
 import { useCurrentUser } from './contexts/CurrentUserContext';
+import EditPostForm from './pages/post/EditPostForm';
 
 function App() {
   const currentUser = useCurrentUser();
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/signup" element={<SignUpForm />} />
           <Route exact path="/post/create" element={<PostCreateForm />} />
           <Route exact path="post/:id" element={<DetailPostPage />} />
+          <Route exact path="post/:id/edit" element={<EditPostForm />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Container>
