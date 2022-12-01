@@ -7,6 +7,8 @@ import styles from "./../../styles/PostCreateEditFormList.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from '../../components/Asset';
 import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
 const PostList = ({ message, filter = "" }) => {
     const [posts, setPosts] = useState({ results: [] });
@@ -51,9 +53,15 @@ const PostList = ({ message, filter = "" }) => {
                     {hasLoaded ? (
                         <>
                             {posts.results.length ? (
-                                posts.results.map((post) => (
+                                <InfiniteScroll children={posts.results.map((post) => (
                                     <Post key={post.id} {...post} setPosts={setPosts} />
                                 ))
+                                }
+                                    dataLength={posts.results.length}
+                                    loader={<Asset spinner />}
+                                    hasMore={!!posts.next}
+                                    next={() => fetchMoreData(posts, setPosts)}
+                                />
                             ) : (
                                 <Container className={"text-center d-flex justify-content-center p-4"}>
                                     <Asset src={NoResults} message={message} height={100} width={100} />

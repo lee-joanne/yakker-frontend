@@ -95,7 +95,6 @@ const Post = (props) => {
                 </Row>
             </Card.Header>
             <Card.Img variant="top" src={image} />
-            <hr />
             <Card.Body>
                 {title && <Card.Text>{title}</Card.Text>}
                 {content && <Card.Text className={styles.Content}> {content} </Card.Text>}
