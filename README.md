@@ -66,7 +66,7 @@
 
     5. As a **user** I can **see the navigation bar at the top of every page** so that **I can easily navigate between pages.**
 
-    6. As a **user** I can **go back or forward to the next page** so that **I can see the footer of the website and choose to move onto the next on the next page or go back a page to see more posts.**
+    6. As a **user** I can **infinitely scroll down to see more posts and also to see more comments** so that **I can consistently look at more posts/comments without having to click any extra links to view more.**
 
     - Profile
 
@@ -79,8 +79,6 @@
     - General
 
     1. As a **user** I can **search for posts or users in a search box** so that **I can quickly find specific posts or users that I am wanting to look for.**
-
-    2. As a **user** I can **always be notified when my interactions on the website are successful (creating posts/comments, liking/unliking posts, unfollowing/following users, logging in/out, etc** so that **I will always be informed of my actions and whether they are successful or not.**
 
 
 ### Design
