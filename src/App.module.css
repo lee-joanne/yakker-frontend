@@ -25,3 +25,10 @@ h1,
     max-width: 100%;
     object-fit: contain;
 }
+
+/* Media queries for mobile-sized screens */
+@media only screen and (max-width: 600px) {
+    .App {
+        padding-top: 45px;
+    }
+}

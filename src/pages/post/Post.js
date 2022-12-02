@@ -59,7 +59,7 @@ const Post = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     };
 
@@ -70,8 +70,8 @@ const Post = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/post/${id}`);
-            detailedPostPage ? navigate('/') : navigate(0);
             setDeleteStatus({ type: 'success' });
+            detailedPostPage ? navigate('/') : navigate(0);
         } catch (err) {
             console.log(err);
             setDeleteStatus({ type: 'err', err });
