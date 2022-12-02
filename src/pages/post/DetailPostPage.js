@@ -4,11 +4,16 @@ import { Col, Row, Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "./../../styles/PostCreateEditFormList.module.css";
+import CommentForm from './CommentForm';
 import Post from './Post';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const DetailPostPage = () => {
     const { id } = useParams();
     const [post, setPost] = useState({ results: [] });
+    const currentUser = useCurrentUser();
+    const yakfile_image = currentUser?.yakfile_image;
+    const [comments, setComments] = useState({ results: [] });
 
     useEffect(() => {
         const handleMount = async () => {
@@ -17,7 +22,6 @@ const DetailPostPage = () => {
                     axiosReq.get(`/post/${id}`)
                 ])
                 setPost({ results: [post] })
-                console.log(post)
             } catch (err) {
                 console.log(err)
             }
@@ -30,8 +34,23 @@ const DetailPostPage = () => {
             <Col className={styles.HeaderText} lg={8}>
                 <p>Popular profiles</p>
                 <Post {...post.results[0]} setPost={setPost} detailedPostPage />
-                <Container className={`bg-white p-5 ${styles.ContainerBox}`}>
-                    Comments
+                <Container className={`bg-white p-3 ${styles.ContainerBox}`}>
+                    <p className="text-center">Comments</p>
+                    <hr />
+                    {currentUser ? (
+                        <CommentForm
+                            yakfile_id={currentUser.yakfile_id}
+                            yakfile_image={yakfile_image}
+                            post={id}
+                            setPost={setPost}
+                            setComments={setComments}
+                        />
+                    ) : comments.results.length ? (
+                        "Comments"
+                    ) :
+                        <>
+                            <p>Sign in and be the first to comment!</p>
+                        </>}
                 </Container>
             </Col>
             <Col className={styles.HeaderText} lg={3}>

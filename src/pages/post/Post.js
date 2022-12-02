@@ -110,8 +110,8 @@ const Post = (props) => {
             </Card.Header>
             <Card.Img variant="top" src={image} />
             <Card.Body>
-                {title && <Card.Text>{title}</Card.Text>}
-                {content && <Card.Text className={styles.Content}> {content} </Card.Text>}
+                <Link className={styles.ToDetailPost} to={`/post/${id}`}>{title && <Card.Text>{title}</Card.Text>}</Link>
+                {content && <Card.Text className={`${styles.Content} mt-2`}> {content} </Card.Text>}
                 <div>
                     {is_author ? (
                         <OverlayTrigger placement="top" overlay={<Tooltip>You can't reyakk your own posts!</Tooltip>}>

@@ -6,7 +6,12 @@
     color: black;
 }
 
-.YakfileLink:hover {
+.ToDetailPost {
+    color: #336A86;
+}
+
+.YakfileLink:hover,
+.ToDetailPost:hover {
     text-decoration: none;
     color: #8EAEC4;
 }
