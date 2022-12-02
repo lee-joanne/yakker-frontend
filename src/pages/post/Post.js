@@ -1,8 +1,8 @@
 // Post functionality credit goes to CI's Moments Project
-import React from 'react';
+import React, { useState } from 'react';
 import styles from "../../styles/Post.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { Card, Col, OverlayTrigger, Row, Tooltip, Alert } from 'react-bootstrap';
 import Avatar from "./../../components/Avatar";
 import shadowStyles from "../../App.module.css";
 import { Link, useNavigate } from 'react-router-dom';
@@ -29,6 +29,7 @@ const Post = (props) => {
     const currentUser = useCurrentUser();
     const is_author = currentUser?.username === author
     const navigate = useNavigate();
+    const [deleteStatus, setDeleteStatus] = useState(undefined);
 
     const handleReyakks = async () => {
         try {
@@ -69,14 +70,27 @@ const Post = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/post/${id}`);
-            detailedPostPage ? navigate(-1) : navigate(0);
+            detailedPostPage ? navigate('/') : navigate(0);
+            setDeleteStatus({ type: 'success' });
         } catch (err) {
             console.log(err);
+            setDeleteStatus({ type: 'err', err });
         }
     };
 
     return (
         <Card className={`mb-3 ${shadowStyles.Shadow}`}>
+            <>
+                {deleteStatus?.type === 'success' &&
+                    <Alert key="success" variant="success">
+                        Post successfully deleted
+                    </Alert>}
+                {deleteStatus?.type === 'error' && (
+                    <Alert key="danger" variant="danger">
+                        Sorry, we couldn't delete your post. Please try again.
+                    </Alert>
+                )}
+            </>
             <Card.Header>
                 <Row>
                     <Col>
