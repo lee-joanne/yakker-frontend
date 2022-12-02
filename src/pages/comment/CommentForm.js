@@ -18,7 +18,7 @@ const CommentForm = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const { data } = await axiosRes.post("/comment", {
+            const { data } = await axiosRes.post("/comment/", {
                 content,
                 post,
             });
@@ -57,7 +57,7 @@ const CommentForm = (props) => {
                 </InputGroup>
             </Form.Group>
             <button
-                className={`${btnStyles.btn} btn d-block ml-auto mt-1`}
+                className={`${btnStyles.btn} btn d-block ml-auto mt-1 mb-4`}
                 disabled={!content.trim()}
                 type="submit"
             >
