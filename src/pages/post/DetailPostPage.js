@@ -15,7 +15,6 @@ const DetailPostPage = () => {
     const currentUser = useCurrentUser();
     const yakfile_image = currentUser?.yakfile_image;
     const [comments, setComments] = useState({ results: [] });
-    const is_post_author = currentUser?.username === post.author
 
     useEffect(() => {
         const handleMount = async () => {
@@ -41,9 +40,7 @@ const DetailPostPage = () => {
                 <Container className={`bg-white p-3 ${styles.ContainerBox}`}>
                     <p className="text-center">Comments</p>
                     <hr />
-                    {is_post_author ? (
-                        <p>You can't comment on your own posts!</p>
-                    ) : !is_post_author ? (
+                    {currentUser ? (
                         <CommentForm
                             yakfile_id={currentUser.yakfile_id}
                             yakfile_image={yakfile_image}
@@ -59,9 +56,9 @@ const DetailPostPage = () => {
                             <Comment key={comment.id} {...comment} />
                         ))
                     ) : currentUser ? (
-                        <span>No comments yet, be the first to comment</span>
+                        <span>It's lonely here... leave a comment?</span>
                     ) : (
-                        <span>No comments yet</span>
+                        <span>No comments... sign up or login if you want to comment!</span>
                     )}
                 </Container>
             </Col>
