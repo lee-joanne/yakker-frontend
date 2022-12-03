@@ -150,7 +150,7 @@ const Comment = (props) => {
                     <p>{content}</p>
                 </Card.Body>
             </Card >
-        </div>
+        </div >
     );
 };
 

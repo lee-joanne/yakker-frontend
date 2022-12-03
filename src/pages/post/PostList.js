@@ -9,6 +9,7 @@ import Asset from '../../components/Asset';
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
+import PopularYakfiles from '../yakfile/PopularYakfiles';
 
 const PostList = ({ message, filter = "" }) => {
     const [posts, setPosts] = useState({ results: [] });
@@ -76,9 +77,7 @@ const PostList = ({ message, filter = "" }) => {
                 </Container>
             </Col>
             <Col className={styles.HeaderText} lg={3}>
-                <p>
-                    Popular profiles for desktop
-                </p>
+                <PopularYakfiles />
             </Col>
         </Row >
     )

@@ -76,6 +76,8 @@
 
     3. As a **user** I can **follow or unfollow other users** so that **I can see or choose to remove posts by specific users in my posts feed.**
 
+    4. As a **user** I can **see the most followed profiles** so that **I will be able to see who the most popular profiles are.**
+
     - General
 
     1. As a **user** I can **search for posts or users in a search box** so that **I can quickly find specific posts or users that I am wanting to look for.**
