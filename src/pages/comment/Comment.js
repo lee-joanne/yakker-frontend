@@ -6,7 +6,9 @@ import { Card, OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import reyakkStyles from "../../styles/Post.module.css";
 import { axiosRes } from '../../api/axiosDefaults';
+import axios from 'axios';
 
 const Comment = (props) => {
     const {
@@ -18,7 +20,9 @@ const Comment = (props) => {
         id,
         post,
         setPost,
-        setComments
+        setComments,
+        comment_reyakks_id,
+        comment_reyakks_count,
     } = props;
 
     const [editForm, setEditForm] = useState(false);
@@ -28,6 +32,38 @@ const Comment = (props) => {
 
     const handleEdit = () => {
         setEditForm(true);
+    };
+
+    const handleReyakks = async () => {
+        try {
+            const { data } = await axiosRes.post('/comment_reyakks/', { comment: id });
+            setComments((prevComments) => ({
+                ...prevComments,
+                results: prevComments.results.map((comment) => {
+                    return comment.id === id
+                        ? { ...comment, comment_reyakks_count: comment.comment_reyakks_count + 1, comment_reyakks_id: data.id }
+                        : post;
+                }),
+            }));
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleUnReyakks = async () => {
+        try {
+            await axios.delete(`/comment_reyakks/${comment_reyakks_id}`);
+            setComments((prevComments) => ({
+                ...prevComments,
+                results: prevComments.results.map((comment) => {
+                    return comment.id === id
+                        ? { ...comment, comment_reyakks_count: comment.comment_reyakks_count - 1, comment_reyakks_id: null }
+                        : comment;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const handleDelete = async () => {
@@ -72,6 +108,20 @@ const Comment = (props) => {
                     </Link>
                     <span className={styles.Commenter}>{commenter}</span>
                     <span className={styles.Date}>{updated_at}</span>
+                    <div className="text-right">
+                        {is_commenter ? (
+                            <OverlayTrigger placement="top" overlay={<Tooltip>You can't reyakk your own comments!</Tooltip>}>
+                                <i className="far fa-heart" />
+                            </OverlayTrigger>
+                        ) : comment_reyakks_id ? (
+                            <span onClick={handleUnReyakks}><i className={`fa-solid fa-heart ${reyakkStyles.Reyakked}`}></i></span>
+                        ) : currentUser ? (
+                            <span onClick={handleReyakks}><i className={`far fa-heart ${reyakkStyles.ReyakkHover}`} /></span>
+                        ) : (
+                            <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like posts!</Tooltip>}><i className="far fa-heart" /></OverlayTrigger>
+                        )}
+                        {comment_reyakks_count}
+                    </div>
                     {editForm ? (
                         <CommentEditForm
                             id={id}
