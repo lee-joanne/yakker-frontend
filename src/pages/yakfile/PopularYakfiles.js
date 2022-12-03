@@ -1,44 +1,22 @@
 // Popular yakfiles functionality credit goes to CI's Moments Project
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card } from 'react-bootstrap';
-import { axiosReq } from '../../api/axiosDefaults';
 import styles from "../../App.module.css";
 import Asset from '../../components/Asset';
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useYakfileData } from '../../contexts/YakfileDataContext';
 import Yakfile from './Yakfile';
+import fontStyle from "../../styles/YakfilePagePopular.module.css";
 
 const PopularYakfiles = ({ mobile }) => {
-    const [yakfileData, setYakfileData] = useState({
-        pageYakfile: { results: [] },
-        popularYakfiles: { results: [] },
-    });
-    const { popularYakfiles } = yakfileData;
-    const currentUser = useCurrentUser();
-
-    useEffect(() => {
-        const handleMount = async () => {
-            try {
-                const { data } = await axiosReq.get(
-                    '/yakfile/?ordering=-follower_count'
-                );
-                setYakfileData(prevState => ({
-                    ...prevState,
-                    popularYakfiles: data,
-                }))
-            } catch (err) {
-                console.log(err)
-            }
-        }
-        handleMount();
-    }, [currentUser]);
+    const { popularYakfiles } = useYakfileData();
 
     return (
-        <Card className={`bg-white mt-3 ${styles.Shadow} 
+        <Card className={`bg-white mt-3 ${styles.Shadow} ${fontStyle.PopularYakfileFont}
         ${mobile && "d-lg-none text-center mb-3"}`}>
             {popularYakfiles.results.length ? (
                 <>
                     <Card.Header>
-                        <p className="text-center mb-0">Popular Yakfiles</p>
+                        <p className="text-center font-weight-bold mb-0">Popular Yakfiles</p>
                     </Card.Header>
                     {mobile ? (
                         <Card.Body className="d-flex justify-content-around small">

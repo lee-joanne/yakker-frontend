@@ -1,4 +1,4 @@
-// Yakfile functionality credit goes to CI's Moments Project
+// Yakfiles functionality credit goes to CI's Moments Project
 import React from 'react';
 import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -19,8 +19,8 @@ const Yakfile = (props) => {
                     <Avatar src={image} height={imageSize} />
                 </Link>
             </div>
-            <div className={`mx-2`}>
-                <strong>{author}</strong>
+            <div className={`mx-2 text-dark`}>
+                {author}
             </div>
             <div className={`text-right ${!mobile && 'ml-auto'}`}>
                 {!mobile && currentUser && !is_author && (
