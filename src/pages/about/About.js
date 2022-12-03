@@ -9,7 +9,7 @@ const About = () => {
         <Container className={`bg-white col-md-8 ${shadowStyles.Shadow}`}>
             <Row className="p-4 mt-5 justify-content-md-center">
                 <Col className="text-center">
-                    <Container><i class="fa-solid fa-question"></i>
+                    <Container><i className="fa-solid fa-question"></i>
                         <Image
                             src={logoImage}
                             className={styles.LogoImage}

@@ -1,4 +1,6 @@
+//Comment delete and edit functionality credit goes to CI's Moments Project
 import React, { useState } from 'react';
+import CommentEditForm from './CommentEditForm';
 import styles from "../../styles/Comment.module.css";
 import { Card, OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -14,12 +16,19 @@ const Comment = (props) => {
         updated_at,
         content,
         id,
+        post,
         setPost,
         setComments
     } = props;
+
+    const [editForm, setEditForm] = useState(false);
     const currentUser = useCurrentUser();
     const [deleteStatus, setDeleteStatus] = useState(undefined);
     const is_commenter = currentUser?.username === commenter;
+
+    const handleEdit = () => {
+        setEditForm(true);
+    };
 
     const handleDelete = async () => {
         try {
@@ -63,10 +72,24 @@ const Comment = (props) => {
                     </Link>
                     <span className={styles.Commenter}>{commenter}</span>
                     <span className={styles.Date}>{updated_at}</span>
-                    {is_commenter && (
+                    {editForm ? (
+                        <CommentEditForm
+                            id={id}
+                            yakfile_id={yakfile_id}
+                            content={content}
+                            yakfileImage={yakfile_image}
+                            setComments={setComments}
+                            setEditForm={setEditForm}
+                            updated_at={updated_at}
+                            post={post}
+                        />
+                    ) : (
+                        null
+                    )}
+                    {is_commenter && !editForm && (
                         <>
                             <div className="text-right">
-                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit comment</Tooltip>}><i className={`fa-solid fa-pen-to-square ml-1 ${styles.EditDeleteIcon}`} onClick={() => { }}></i></OverlayTrigger>
+                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit comment</Tooltip>}><i className={`fa-solid fa-pen-to-square ml-1 ${styles.EditDeleteIcon}`} onClick={handleEdit}></i></OverlayTrigger>
                                 <span className="text-dark ml-1 mr-1"> | </span>
                                 <OverlayTrigger placement="top" overlay={<Tooltip>Click to delete comment</Tooltip>}><i className={`fa-solid fa-trash ${styles.EditDeleteIcon}`} onClick={handleDelete} ></i></OverlayTrigger>
                             </div>
@@ -77,7 +100,7 @@ const Comment = (props) => {
                     <p>{content}</p>
                 </Card.Body>
             </Card >
-        </div >
+        </div>
     );
 };
 
