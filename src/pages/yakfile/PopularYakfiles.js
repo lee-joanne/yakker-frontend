@@ -1,11 +1,13 @@
+// Popular yakfiles functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from "../../App.module.css";
 import Asset from '../../components/Asset';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import Yakfile from './Yakfile';
 
-const PopularYakfiles = () => {
+const PopularYakfiles = ({ mobile }) => {
     const [yakfileData, setYakfileData] = useState({
         pageYakfile: { results: [] },
         popularYakfiles: { results: [] },
@@ -31,17 +33,26 @@ const PopularYakfiles = () => {
     }, [currentUser]);
 
     return (
-        <Card className={`bg-white mt-3 ${styles.Shadow}`}>
+        <Card className={`bg-white mt-3 ${styles.Shadow} 
+        ${mobile && "d-lg-none text-center mb-3"}`}>
             {popularYakfiles.results.length ? (
                 <>
                     <Card.Header>
                         <p className="text-center mb-0">Popular Yakfiles</p>
                     </Card.Header>
-                    <Card.Body>
-                        {popularYakfiles.results.map(yakfile => (
-                            <p key={yakfile.id}>{yakfile.author}</p>
-                        ))}
-                    </Card.Body>
+                    {mobile ? (
+                        <Card.Body className="d-flex justify-content-around small">
+                            {popularYakfiles.results.slice(0, 4).map((yakfile => (
+                                <Yakfile key={yakfile.id} yakfile={yakfile} mobile />
+                            )))}
+                        </Card.Body>
+                    ) : (
+                        <Card.Body>
+                            {popularYakfiles.results.map((yakfile => (
+                                <Yakfile key={yakfile.id} yakfile={yakfile} />
+                            )))}
+                        </Card.Body>
+                    )}
                 </>
             ) : (
                 <Asset spinner />

@@ -43,8 +43,8 @@ const PostList = ({ message, filter = "" }) => {
 
     return (
         <Row>
-            <Col className={styles.HeaderText} lg={8}>
-                <p>Popular profiles</p>
+            <Col className={styles.HeaderText} lg={7}>
+                <PopularYakfiles mobile />
                 <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}></i>
                 <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
                     <Form.Control type="text" placeholder="Search posts based on author, content, or title!"
@@ -76,7 +76,7 @@ const PostList = ({ message, filter = "" }) => {
                     )}
                 </Container>
             </Col>
-            <Col className={styles.HeaderText} lg={3}>
+            <Col className={styles.HeaderText} lg={4}>
                 <PopularYakfiles />
             </Col>
         </Row >
