@@ -1,3 +1,8 @@
 .PopularYakfileFont {
     font-family: 'Raleway', sans-serif;
 }
+
+.YakfileImage {
+    height: 75px;
+    width: 75px;
+}
