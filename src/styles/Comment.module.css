@@ -6,3 +6,12 @@
     font-weight: lighter;
     color: #c1c1c5;
 }
+
+.EditDeleteIcon:hover {
+    cursor: pointer;
+    color: #8EAEC4;
+}
+
+.EditDeleteIcon {
+    color: grey;
+}
