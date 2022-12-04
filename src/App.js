@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import './api/axiosDefaults';
 import SignUpForm from "./pages/auth/SignUpForm"
 import LoginForm from "./pages/auth/LoginForm"
-import Footer from './footer';
+import Footer from './Footer';
 import PostCreateForm from './pages/post/PostCreateForm';
 import Page404 from './components/Page404';
 import DetailPostPage from './pages/post/DetailPostPage';
