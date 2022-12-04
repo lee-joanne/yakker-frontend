@@ -60,6 +60,9 @@ const PostCreateForm = () => {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 

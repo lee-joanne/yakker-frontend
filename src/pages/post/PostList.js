@@ -1,7 +1,7 @@
 // Post list functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Container, Form } from "react-bootstrap";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Post from "./Post";
 import styles from "./../../styles/PostCreateEditFormList.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -15,9 +15,8 @@ const PostList = ({ message, filter = "" }) => {
     const [posts, setPosts] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
-
     const [search, setSearch] = useState("");
-
+    const navigate = useNavigate();
     const handleSearch = (event) => {
         setSearch(event.target.value)
     }
@@ -30,6 +29,9 @@ const PostList = ({ message, filter = "" }) => {
                 setHasLoaded(true)
             } catch (err) {
                 console.log(err)
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
             }
         }
         setHasLoaded(false);
@@ -39,7 +41,7 @@ const PostList = ({ message, filter = "" }) => {
         return () => {
             clearTimeout(timer);
         }
-    }, [filter, search, pathname])
+    }, [filter, search, pathname, navigate])
 
     return (
         <Row>

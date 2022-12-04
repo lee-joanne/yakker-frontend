@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import CommentEditForm from './CommentEditForm';
 import styles from "../../styles/Comment.module.css";
 import { Card, OverlayTrigger, Tooltip, Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import reyakkStyles from "../../styles/Post.module.css";
@@ -29,6 +29,7 @@ const Comment = (props) => {
     const currentUser = useCurrentUser();
     const [deleteStatus, setDeleteStatus] = useState(undefined);
     const is_commenter = currentUser?.username === commenter;
+    const navigate = useNavigate();
 
     const handleEdit = () => {
         setEditForm(true);
@@ -47,6 +48,9 @@ const Comment = (props) => {
             }));
         } catch (err) {
             console.log(err)
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     }
 
@@ -63,6 +67,9 @@ const Comment = (props) => {
             }));
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 
@@ -84,6 +91,9 @@ const Comment = (props) => {
             }));
         } catch (err) {
             console.log(err)
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
             setDeleteStatus({ type: 'err', err });
         }
     };

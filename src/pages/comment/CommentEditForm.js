@@ -4,10 +4,11 @@ import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from "../../styles/Comment.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import { useNavigate } from "react-router-dom";
 
 function CommentEditForm(props) {
     const { id, content, setEditForm, setComments, post } = props;
-
+    const navigate = useNavigate();
     const [formContent, setFormContent] = useState(content);
 
     const handleChange = (event) => {
@@ -37,6 +38,9 @@ function CommentEditForm(props) {
             setEditForm(false);
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 

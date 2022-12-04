@@ -1,7 +1,7 @@
 // Detail post functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "./../../styles/PostCreateEditFormList.module.css";
 import CommentForm from '../comment/CommentForm';
@@ -19,6 +19,7 @@ const DetailPostPage = () => {
     const currentUser = useCurrentUser();
     const yakfile_image = currentUser?.yakfile_image;
     const [comments, setComments] = useState({ results: [] });
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleMount = async () => {
@@ -31,10 +32,13 @@ const DetailPostPage = () => {
                 setComments(comments);
             } catch (err) {
                 console.log(err)
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
             }
         }
         handleMount();
-    }, [id])
+    }, [navigate, id])
 
     return (
         <Row>

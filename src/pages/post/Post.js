@@ -44,6 +44,9 @@ const Post = (props) => {
             }));
         } catch (err) {
             console.log(err)
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     }
 
@@ -60,6 +63,9 @@ const Post = (props) => {
             }));
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 
@@ -74,6 +80,9 @@ const Post = (props) => {
             detailedPostPage ? navigate('/') : navigate(0);
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
             setDeleteStatus({ type: 'err', err });
         }
     };

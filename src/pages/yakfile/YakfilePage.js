@@ -8,7 +8,7 @@ import PopularYakfiles from "./PopularYakfiles";
 import Post from "../post/Post";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import styles from "../../styles/YakfilePagePopular.module.css";
@@ -17,6 +17,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 function YakfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
+    const navigate = useNavigate();
     const [yakfilePosts, setYakfilePosts] = useState({ results: [] });
     const currentUser = useCurrentUser();
     const { id } = useParams();
@@ -40,10 +41,13 @@ function YakfilePage() {
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err)
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
             }
         };
         fetchData()
-    }, [id, setYakfileData]);
+    }, [id, setYakfileData, navigate]);
 
     const mainYakfile = (
         <>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { axiosRes } from '../../api/axiosDefaults';
 import { Form, InputGroup } from "react-bootstrap";
 import Avatar from '../../components/Avatar';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
@@ -10,7 +10,7 @@ const CommentForm = (props) => {
     const { post, setPost, setComments, yakfile_image, yakfile_id } = props;
     const [content, setContent] = useState("");
     const currentUser = useCurrentUser();
-
+    const navigate = useNavigate();
     const handleChange = (event) => {
         setContent(event.target.value);
     };
@@ -37,6 +37,9 @@ const CommentForm = (props) => {
             setContent("");
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 

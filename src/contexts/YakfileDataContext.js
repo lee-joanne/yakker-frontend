@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from './CurrentUserContext';
 import { axiosReq } from "../api/axiosDefaults";
+import { useNavigate } from "react-router-dom";
 
 const YakfileDataContext = createContext();
 const SetYakfileDataContext = createContext();
@@ -13,6 +14,7 @@ export const YakfileDataProvider = ({ children }) => {
         popularYakfiles: { results: [] },
     });
     const currentUser = useCurrentUser();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleMount = async () => {
@@ -26,10 +28,13 @@ export const YakfileDataProvider = ({ children }) => {
                 }))
             } catch (err) {
                 console.log(err)
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
             }
         }
         handleMount();
-    }, [currentUser]);
+    }, [currentUser, navigate]);
 
     return (
         <YakfileDataContext.Provider value={yakfileData}>

@@ -35,6 +35,9 @@ const SignUpForm = () => {
             navigate('/login')
         } catch (err) {
             setErrors(err.response?.data)
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 

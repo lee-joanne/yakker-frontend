@@ -23,6 +23,9 @@ const NavBar = () => {
             navigate('/')
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 

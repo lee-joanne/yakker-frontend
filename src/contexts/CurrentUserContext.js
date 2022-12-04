@@ -34,6 +34,9 @@ export const CurrentUserProvider = ({ children }) => {
                 try {
                     await axios.post("/dj-rest-auth/token/refresh/");
                 } catch (err) {
+                    if (err.response?.status === 500) {
+                        navigate('/500')
+                    }
                     setCurrentUser((prevCurrentUser) => {
                         if (prevCurrentUser) {
                             navigate("/signin");
@@ -45,6 +48,9 @@ export const CurrentUserProvider = ({ children }) => {
                 return config;
             },
             (err) => {
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
                 return Promise.reject(err);
             }
         );
@@ -52,6 +58,9 @@ export const CurrentUserProvider = ({ children }) => {
         axiosRes.interceptors.response.use(
             (response) => response,
             async (err) => {
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
                 if (err.response?.status === 401) {
                     try {
                         await axios.post("/dj-rest-auth/token/refresh/");

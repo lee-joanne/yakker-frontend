@@ -31,6 +31,9 @@ const EditPostForm = () => {
                 is_author ? setPostData({ title, content, image }) : navigate(-1)
             } catch (err) {
                 console.log(err)
+                if (err.response?.status === 500) {
+                    navigate('/500')
+                }
             }
         }
         handleMount();
@@ -70,6 +73,9 @@ const EditPostForm = () => {
             console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
+            }
+            if (err.response?.status === 500) {
+                navigate('/500')
             }
         }
     };

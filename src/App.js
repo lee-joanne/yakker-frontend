@@ -15,6 +15,7 @@ import { useCurrentUser } from './contexts/CurrentUserContext';
 import EditPostForm from './pages/post/EditPostForm';
 import About from './pages/about/About';
 import YakfilePage from './pages/yakfile/YakfilePage';
+import Page500 from './components/Page500';
 
 function App() {
   const currentUser = useCurrentUser();
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="post/:id/edit" element={<EditPostForm />} />
           <Route exact path="/yakfile/:id" element={<YakfilePage />} />
           <Route path="*" element={<Page404 />} />
+          <Route path="/500" element={<Page500 />} />
         </Routes>
       </Container>
       <Footer />
