@@ -80,6 +80,16 @@ function YakfilePage() {
                         ) : (
                             <Button className={btnStyles.btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
                         ))}
+                    {yakfile?.is_author &&
+                        <>
+                            <div>
+                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit yakfile</Tooltip>}><i className={`fa-solid fa-user-pen ml-1 ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit`) }}></i></OverlayTrigger>
+                                <span className="text-dark ml-1 mr-1"> | </span>
+                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to change username</Tooltip>}><i className={`fa-solid fa-signature ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/username`) }}></i></OverlayTrigger>
+                                <span className="text-dark ml-1 mr-1"> | </span>
+                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to change password</Tooltip>}><i className={`fa-solid fa-lock ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/password`) }} ></i></OverlayTrigger>
+                            </div>
+                        </>}
                 </Col>
                 {yakfile?.content && <Col className="p-3">{yakfile.content}</Col>}
             </Row>
@@ -114,16 +124,6 @@ function YakfilePage() {
     return (
         <Container>
             <PopularYakfiles mobile />
-            {yakfile?.is_author &&
-                <>
-                    <div>
-                        <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit yakfile</Tooltip>}><i className={`fa-solid fa-user-pen ml-1 ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit`) }}></i></OverlayTrigger>
-                        <span className="text-dark ml-1 mr-1"> | </span>
-                        <OverlayTrigger placement="top" overlay={<Tooltip>Click to change username</Tooltip>}><i className={`fa-solid fa-signature ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/username`) }}></i></OverlayTrigger>
-                        <span className="text-dark ml-1 mr-1"> | </span>
-                        <OverlayTrigger placement="top" overlay={<Tooltip>Click to change password</Tooltip>}><i className={`fa-solid fa-lock ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/password`) }} ></i></OverlayTrigger>
-                    </div>
-                </>}
             <Row>
                 <Col className={`bg-white py-2 p-0 p-lg-2 ${shadowStyles.Shadow}`} lg={8}>
                     <Container>
