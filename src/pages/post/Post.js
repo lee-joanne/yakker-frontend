@@ -2,7 +2,11 @@
 import React from 'react';
 import styles from "../../styles/Post.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Row from "react-bootstrap/Row";
+import Tooltip from "react-bootstrap/Tooltip";
 import Avatar from "./../../components/Avatar";
 import shadowStyles from "../../App.module.css";
 import { Link, useNavigate } from 'react-router-dom';

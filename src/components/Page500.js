@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Button } from 'react-bootstrap';
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
 import gif from '../assets/page-500.gif';
 import btnStyles from './../styles/Button.module.css';

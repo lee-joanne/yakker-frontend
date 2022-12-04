@@ -2,7 +2,7 @@
 import React from 'react';
 import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom';
 import Avatar from '../../components/Avatar';
 import { useSetYakfileData } from '../../contexts/YakfileDataContext';

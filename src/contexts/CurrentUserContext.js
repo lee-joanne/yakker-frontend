@@ -1,5 +1,4 @@
 // Code for CurrentUserContext taken from CI's Moments Project
-
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";

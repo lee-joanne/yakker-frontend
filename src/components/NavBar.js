@@ -1,7 +1,9 @@
 // Code for NavBar navigation, expanding NavBar toggle event listener, and conditional
 // rendering taken from CI's Moments project.
 import React from 'react';
-import { Navbar, Container, Nav } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 import logo from '../assets/yakker-logo.png';
 import styles from '../styles/NavBar.module.css';
 import { useNavigate, NavLink } from "react-router-dom";

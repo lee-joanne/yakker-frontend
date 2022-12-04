@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import CommentEditForm from './CommentEditForm';
 import styles from "../../styles/Comment.module.css";
-import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';

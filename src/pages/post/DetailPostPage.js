@@ -1,6 +1,8 @@
 // Detail post functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Container } from 'react-bootstrap';
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 import { useNavigate, useParams } from 'react-router-dom';
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "./../../styles/PostCreateEditFormList.module.css";

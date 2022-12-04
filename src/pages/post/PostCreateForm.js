@@ -1,6 +1,12 @@
 // Creating post functionality credit goes to CI's Moments Project
 import React, { useRef, useState } from 'react';
-import { Form, Button, Row, Container, Col, Image, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
 import Asset from '../../components/Asset';
 import styles from "./../../styles/PostCreateEditFormList.module.css";
 import upload from "./../../assets/upload.png";

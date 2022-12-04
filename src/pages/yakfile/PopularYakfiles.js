@@ -1,6 +1,6 @@
 // Popular yakfiles functionality credit goes to CI's Moments Project
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 import styles from "../../App.module.css";
 import Asset from '../../components/Asset';
 import { useYakfileData } from '../../contexts/YakfileDataContext';

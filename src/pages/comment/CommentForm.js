@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { axiosRes } from '../../api/axiosDefaults';
-import { Form, InputGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import Avatar from '../../components/Avatar';
 import { Link, useNavigate } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";

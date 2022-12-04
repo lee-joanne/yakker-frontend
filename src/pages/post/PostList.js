@@ -1,6 +1,9 @@
 // Post list functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Container, Form } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Post from "./Post";
 import styles from "./../../styles/PostCreateEditFormList.module.css";

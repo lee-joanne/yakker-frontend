@@ -2,7 +2,10 @@ import React from 'react';
 import logoImage from "../../assets/yakker-logo-image.png";
 import shadowStyles from "../../App.module.css";
 import styles from "../../styles/About.module.css";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 
 const About = () => {
     return (
