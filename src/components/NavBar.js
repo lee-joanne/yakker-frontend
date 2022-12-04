@@ -55,7 +55,11 @@ const NavBar = () => {
         </>
     );
     const yakfileUser = (
-        <Navbar.Brand><Avatar src={currentUser && currentUser.yakfile_image} yakfile={currentUser && currentUser.username} height={35} /></Navbar.Brand>
+        <NavLink
+            className={styles.NavLink}
+            to={`/yakfile/${currentUser?.yakfile_id}`}>
+            <Navbar.Brand><Avatar src={currentUser && currentUser.yakfile_image} yakfile={currentUser && currentUser.username} height={35} /></Navbar.Brand>
+        </NavLink>
     )
 
     return (
