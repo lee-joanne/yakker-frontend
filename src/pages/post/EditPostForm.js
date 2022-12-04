@@ -36,7 +36,7 @@ const EditPostForm = () => {
                 const { title, content, image, is_author } = data
                 is_author ? setPostData({ title, content, image }) : navigate(-1)
             } catch (err) {
-                console.log(err)
+                // console.log(err)
                 if (err.response?.status === 500) {
                     navigate('/500')
                 }
@@ -76,7 +76,7 @@ const EditPostForm = () => {
             await axiosReq.put(`/post/${id}`, formData);
             navigate(`/post/${id}`);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
@@ -125,8 +125,8 @@ const EditPostForm = () => {
                             </Alert>
                         ))}
                         <div className='text-center mb-2'>
-                            <Button onClick={() => navigate(-1)} className={`${btnStyles.btn}`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
-                            <Button type="submit" className={`${btnStyles.btn} ml-2`}>Edit Post</Button>
+                            <Button onClick={() => navigate(-1)} className={`${btnStyles.Btn}`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
+                            <Button type="submit" className={`${btnStyles.Btn} ml-2`}>Edit Post</Button>
                         </div>
                     </Container>
                 </Col>

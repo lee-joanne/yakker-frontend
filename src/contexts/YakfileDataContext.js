@@ -38,7 +38,7 @@ export const YakfileDataProvider = ({ children }) => {
                 },
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -64,7 +64,7 @@ export const YakfileDataProvider = ({ children }) => {
             }));
             navigate(0);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -82,7 +82,7 @@ export const YakfileDataProvider = ({ children }) => {
                     popularYakfiles: data,
                 }))
             } catch (err) {
-                console.log(err)
+                // console.log(err)
                 if (err.response?.status === 500) {
                     navigate('/500')
                 }

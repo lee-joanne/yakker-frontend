@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
 import gif from '../assets/page-500.gif';
 import btnStyles from './../styles/Button.module.css';
-import fontStyle from "./../App.module.css";
+import fontStyles from "./../App.module.css";
 
 const Page500 = () => {
     const navigate = useNavigate();
@@ -15,8 +15,8 @@ const Page500 = () => {
                 <img src={gif} alt="Not found..." />
             </Container>
             <Container className="mt-1">
-                <p className={fontStyle.HeadingFont}>Sorry... there's something wrong. It's not you, it's us.</p>
-                <Button className={btnStyles.btn} onClick={() => navigate(-1)} type="submit">Go back?</Button>
+                <p className={fontStyles.HeadingFont}>Sorry... there's something wrong. It's not you, it's us.</p>
+                <Button className={btnStyles.Btn} onClick={() => navigate(-1)} type="submit">Go back?</Button>
             </Container>
         </div >
     )

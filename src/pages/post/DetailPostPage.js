@@ -33,7 +33,7 @@ const DetailPostPage = () => {
                 setPost({ results: [post] });
                 setComments(comments);
             } catch (err) {
-                console.log(err)
+                // console.log(err)
                 if (err.response?.status === 500) {
                     navigate('/500')
                 }
@@ -46,7 +46,7 @@ const DetailPostPage = () => {
         <Row>
             <Col className={styles.HeaderText} lg={8}>
                 <PopularYakfiles mobile />
-                <Post {...post.results[0]} setPost={setPost} detailedPostPage />
+                <Post {...post.results[0]} setPosts={setPost} detailedPostPage />
                 <Container className={`bg-white p-3 ${styles.ContainerBox}`}>
                     <p className="text-center">Comments</p>
                     <hr />

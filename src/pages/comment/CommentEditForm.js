@@ -37,7 +37,7 @@ function CommentEditForm(props) {
             }));
             setEditForm(false);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -57,14 +57,14 @@ function CommentEditForm(props) {
             </Form.Group>
             <div className="text-right p-2">
                 <button
-                    className={`p-2 ${btnStyles.btn}`}
+                    className={`p-2 ${btnStyles.Btn}`}
                     onClick={() => setEditForm(false)}
                     type="button"
                 >
                     Cancel
                 </button>
                 <button
-                    className={`ml-2 p-2 ${btnStyles.btn}`}
+                    className={`ml-2 p-2 ${btnStyles.Btn}`}
                     disabled={!content.trim()}
                     type="submit"
                 >

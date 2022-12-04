@@ -13,6 +13,7 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import PopularYakfiles from '../yakfile/PopularYakfiles';
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const PostList = ({ message, filter = "" }) => {
     const [posts, setPosts] = useState({ results: [] });
@@ -23,6 +24,7 @@ const PostList = ({ message, filter = "" }) => {
     const handleSearch = (event) => {
         setSearch(event.target.value)
     }
+    const currentUser = useCurrentUser();
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -31,7 +33,7 @@ const PostList = ({ message, filter = "" }) => {
                 setPosts(data)
                 setHasLoaded(true)
             } catch (err) {
-                console.log(err)
+                // console.log(err)
                 if (err.response?.status === 500) {
                     navigate('/500')
                 }
@@ -44,7 +46,7 @@ const PostList = ({ message, filter = "" }) => {
         return () => {
             clearTimeout(timer);
         }
-    }, [filter, search, pathname, navigate])
+    }, [filter, search, pathname, navigate, currentUser])
 
     return (
         <Row>

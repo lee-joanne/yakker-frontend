@@ -25,7 +25,6 @@ const NavBar = () => {
             setCurrentUser(null);
             removeTokenTimestamp();
         } catch (err) {
-            console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -43,7 +42,7 @@ const NavBar = () => {
             <NavLink to="/reyakked" className={({ isActive }) =>
                 isActive ? styles.Active : styles.NavText
             }><i className="fa-solid fa-heart"></i> Reyakked</NavLink>
-            <NavLink className={styles.NavText} onClick={handleLogOut}><i className="fa-solid fa-right-to-bracket"></i> Log out</NavLink>
+            <NavLink to="/" className={styles.NavText} onClick={handleLogOut}><i className="fa-solid fa-right-to-bracket"></i> Log out</NavLink>
         </>
     const loggedOutIcons = (
         <>

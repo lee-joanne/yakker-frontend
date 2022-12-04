@@ -1,22 +1,22 @@
-.btn {
+.Btn {
     background-color: #336A86;
     color: white;
     border: none;
 }
 
-.btn:hover {
+.Btn:hover {
     background-color: white;
     color: #336A86;
     cursor: pointer;
 }
 
-.btnUnfollow {
+.BtnUnfollow {
     color: #336A86;
     background-color: white;
     border-color: #336A86;
 }
 
-.btnUnfollow:hover {
+.BtnUnfollow:hover {
     background-color: #336A86;
     color: white;
 }

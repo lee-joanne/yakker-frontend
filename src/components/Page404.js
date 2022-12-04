@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
 import gif from '../assets/page-404.gif';
 import btnStyles from './../styles/Button.module.css';
-import fontStyle from "./../App.module.css";
+import fontStyles from "./../App.module.css";
 
 const Page404 = () => {
     const navigate = useNavigate();
@@ -15,8 +15,8 @@ const Page404 = () => {
                 <img src={gif} alt="Not found..." />
             </Container>
             <Container className="mt-1">
-                <p className={fontStyle.HeadingFont}>Oops! The page you're looking for doesn't exist.</p>
-                <Button className={btnStyles.btn} onClick={() => navigate(-1)} type="submit">Go back?</Button>
+                <p className={fontStyles.HeadingFont}>Oops! The page you're looking for doesn't exist.</p>
+                <Button className={btnStyles.Btn} onClick={() => navigate(-1)} type="submit">Go back?</Button>
             </Container>
         </div >
     )

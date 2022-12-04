@@ -42,6 +42,7 @@ const SignUpForm = () => {
             await axios.post('/dj-rest-auth/registration/', signUpData)
             navigate('/login')
         } catch (err) {
+            // console.log(err)
             setErrors(err.response?.data)
             if (err.response?.status === 500) {
                 navigate('/500')
@@ -83,7 +84,7 @@ const SignUpForm = () => {
                                 <Alert variant="warning" key={idx}>{message}</Alert>)}
 
                             <br />
-                            <Button className={btnStyles.btn} variant="primary" type="submit">
+                            <Button className={btnStyles.Btn} variant="primary" type="submit">
                                 Sign me up
                             </Button>
                             {errors.non_field_errors?.map((message, idx) => (

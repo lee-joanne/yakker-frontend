@@ -27,9 +27,9 @@ const Yakfile = (props) => {
             <div className={`text-right ${!mobile && 'ml-auto'}`}>
                 {!mobile && currentUser && !is_author && (
                     following_id ? (
-                        <Button className={btnStyles.btnUnfollow} onClick={() => handleUnfollow(yakfile)}>Unfollow</Button>
+                        <Button className={btnStyles.BtnUnfollow} onClick={() => handleUnfollow(yakfile)}>Unfollow</Button>
                     ) : (
-                        <Button className={btnStyles.btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
+                        <Button className={btnStyles.Btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
                     )
                 )}
             </div>

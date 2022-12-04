@@ -61,7 +61,7 @@ const PostCreateForm = () => {
             const { data } = await axiosReq.post("/post/", formData);
             navigate(`/post/${data.id}`);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
@@ -120,8 +120,8 @@ const PostCreateForm = () => {
                             </Alert>
                         ))}
                         <div className='text-center mb-2'>
-                            <Button onClick={() => navigate(-1)} className={`${btnStyles.btn}`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
-                            <Button type="submit" className={`${btnStyles.btn} ml-2`}>Create Post</Button>
+                            <Button onClick={() => navigate(-1)} className={`${btnStyles.Btn}`}><i className="fa-solid fa-arrow-left"></i> Go back</Button>
+                            <Button type="submit" className={`${btnStyles.Btn} ml-2`}>Create Post</Button>
                         </div>
                     </Container>
                 </Col>

@@ -40,7 +40,7 @@ function YakfilePage() {
                 setYakfilePosts(yakfilePosts);
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err)
+                // console.log(err)
                 if (err.response?.status === 500) {
                     navigate('/500')
                 }
@@ -75,9 +75,9 @@ function YakfilePage() {
                 <Col lg={3} className="text-lg-right">
                     {currentUser && !is_author && (
                         yakfile?.following_id ? (
-                            <Button className={btnStyles.btn} onClick={() => handleUnfollow(yakfile)}>Unfollow</Button>
+                            <Button className={btnStyles.Btn} onClick={() => handleUnfollow(yakfile)}>Unfollow</Button>
                         ) : (
-                            <Button className={btnStyles.btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
+                            <Button className={btnStyles.Btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
                         ))}
                     {yakfile?.is_author &&
                         <>

@@ -47,6 +47,7 @@ const LoginForm = () => {
             setTokenTimestamp(data);
             navigate(-1)
         } catch (err) {
+            // console.log(err)
             setErrors(err.response?.data)
             if (err.response?.status === 500) {
                 navigate('/500')
@@ -81,7 +82,7 @@ const LoginForm = () => {
                                 <Alert variant="warning" key={idx}>{message}</Alert>)}
 
                             <br />
-                            <Button className={btnStyles.btn} variant="primary" type="submit">
+                            <Button className={btnStyles.Btn} variant="primary" type="submit">
                                 Login!
                             </Button>
                             {errors.non_field_errors?.map((message, idx) => (

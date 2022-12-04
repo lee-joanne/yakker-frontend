@@ -39,7 +39,7 @@ const YakfileEditForm = () => {
                     const { name, content, image } = data;
                     setYakfileData({ name, content, image });
                 } catch (err) {
-                    console.log(err);
+                    // console.log(err);
                     navigate("/");
                     if (err.response?.status === 500) {
                         navigate('/500')
@@ -78,7 +78,7 @@ const YakfileEditForm = () => {
             }));
             navigate(-1);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             setErrors(err.response?.data);
         }
     };
@@ -103,13 +103,13 @@ const YakfileEditForm = () => {
             ))}
             <div className="mt-2">
                 <Button
-                    className={`${btnStyles.btn} mr-2`}
+                    className={`${btnStyles.Btn} mr-2`}
                     onClick={() => navigate(-1)}
                 >
                     Cancel
                 </Button>
                 <Button
-                    className={`${btnStyles.btn}`}
+                    className={`${btnStyles.Btn}`}
                     type="submit"
                 >
                     Update

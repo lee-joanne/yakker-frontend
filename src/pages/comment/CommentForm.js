@@ -37,7 +37,7 @@ const CommentForm = (props) => {
             }));
             setContent("");
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -61,7 +61,7 @@ const CommentForm = (props) => {
                 </InputGroup>
             </Form.Group>
             <button
-                className={`${btnStyles.btn} btn d-block ml-auto mt-1 mb-4`}
+                className={`${btnStyles.Btn} btn d-block ml-auto mt-1 mb-4`}
                 disabled={!content.trim()}
                 type="submit"
             >

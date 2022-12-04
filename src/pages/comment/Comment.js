@@ -48,7 +48,7 @@ const Comment = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -67,7 +67,7 @@ const Comment = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
@@ -90,7 +90,7 @@ const Comment = (props) => {
                 results: prevComments.results.filter((comment) => comment.id !== id),
             }));
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             if (err.response?.status === 500) {
                 navigate('/500')
             }
