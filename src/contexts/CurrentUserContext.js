@@ -40,7 +40,7 @@ export const CurrentUserProvider = ({ children }) => {
                         }
                         setCurrentUser((prevCurrentUser) => {
                             if (prevCurrentUser) {
-                                navigate("/signin");
+                                navigate("/login");
                             }
                             return null;
                         });
