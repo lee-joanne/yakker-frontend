@@ -45,7 +45,7 @@ const LoginForm = () => {
             const { data } = await axios.post('/dj-rest-auth/login/', loginData)
             setCurrentUser(data.user);
             setTokenTimestamp(data);
-            navigate(-1)
+            navigate("/")
         } catch (err) {
             // console.log(err)
             setErrors(err.response?.data)
