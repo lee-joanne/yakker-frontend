@@ -59,7 +59,7 @@ const DetailPostPage = () => {
                             setComments={setComments}
                         />
                     ) : comments.results.length ? (
-                        "Comments"
+                        ""
                     ) : null}
                     {comments.results.length ? (
                         <InfiniteScroll
