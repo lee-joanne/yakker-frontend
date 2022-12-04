@@ -12,7 +12,7 @@ const Yakfile = (props) => {
     const { id, following_id, image, author } = yakfile;
     const currentUser = useCurrentUser();
     const is_author = currentUser?.username === author;
-    const { handleFollow } = useSetYakfileData();
+    const { handleFollow, handleUnfollow } = useSetYakfileData();
 
     return (
         <div className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}>
@@ -27,7 +27,7 @@ const Yakfile = (props) => {
             <div className={`text-right ${!mobile && 'ml-auto'}`}>
                 {!mobile && currentUser && !is_author && (
                     following_id ? (
-                        <Button className={btnStyles.btnUnfollow}>Unfollow</Button>
+                        <Button className={btnStyles.btnUnfollow} onClick={() => handleUnfollow(yakfile)}>Unfollow</Button>
                     ) : (
                         <Button className={btnStyles.btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
                     )

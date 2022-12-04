@@ -60,19 +60,18 @@ const DetailPostPage = () => {
                         "Comments"
                     ) : null}
                     {comments.results.length ? (
-                        <InfiniteScroll children={comments.results.map(comment => (
-                            <Comment
-                                key={comment.id}
-                                {...comment}
-                                setPost={setPost}
-                                setComments={setComments}
-                            />
-                        ))}
+                        <InfiniteScroll
                             dataLength={comments.results.length}
                             loader={<Asset spinner />}
                             hasMore={!!comments.next}
-                            next={() => fetchMoreData(comments, setComments)}
-                        />
+                            next={() => {
+                                fetchMoreData(comments, setComments);
+                            }}
+                        >
+                            {comments.results.map((comment) => (
+                                <Comment key={comment.id} setPost={setPost} setComments={setComments} {...comment} />
+                            ))}
+                        </InfiniteScroll>
                     ) : currentUser ? (
                         <span>It's lonely here... leave a comment?</span>
                     ) : (

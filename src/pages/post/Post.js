@@ -1,8 +1,8 @@
 // Post functionality credit goes to CI's Moments Project
-import React, { useState } from 'react';
+import React from 'react';
 import styles from "../../styles/Post.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Col, OverlayTrigger, Row, Tooltip, Alert } from 'react-bootstrap';
+import { Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import Avatar from "./../../components/Avatar";
 import shadowStyles from "../../App.module.css";
 import { Link, useNavigate } from 'react-router-dom';

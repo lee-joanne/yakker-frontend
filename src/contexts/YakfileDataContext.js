@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from './CurrentUserContext';
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
-import { followHelper } from "../utils/utils";
+import { followHelper, unfollowHelper } from "../utils/utils";
 
 const YakfileDataContext = createContext();
 const SetYakfileDataContext = createContext();
@@ -39,6 +39,35 @@ export const YakfileDataProvider = ({ children }) => {
             }));
         } catch (err) {
             console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
+        }
+    };
+
+    const handleUnfollow = async (clickedYakfile) => {
+        try {
+            await axiosRes.delete(`/follower/${clickedYakfile.following_id}`);
+            setYakfileData((prevState) => ({
+                ...prevState,
+                pageYakfile: {
+                    results: prevState.pageYakfile.results.map((yakfile) =>
+                        unfollowHelper(yakfile, clickedYakfile)
+                    ),
+                },
+                popularYakfile: {
+                    ...prevState.popularYakfiles,
+                    results: prevState.popularYakfiles.results.map((yakfile) =>
+                        unfollowHelper(yakfile, clickedYakfile)
+                    ),
+                },
+            }));
+            navigate(0);
+        } catch (err) {
+            console.log(err);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 
@@ -64,7 +93,7 @@ export const YakfileDataProvider = ({ children }) => {
 
     return (
         <YakfileDataContext.Provider value={yakfileData}>
-            <SetYakfileDataContext.Provider value={{ setYakfileData, handleFollow }}>
+            <SetYakfileDataContext.Provider value={{ setYakfileData, handleFollow, handleUnfollow }}>
                 {children}
             </SetYakfileDataContext.Provider>
         </YakfileDataContext.Provider>

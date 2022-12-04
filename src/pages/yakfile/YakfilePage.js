@@ -21,7 +21,7 @@ function YakfilePage() {
     const [yakfilePosts, setYakfilePosts] = useState({ results: [] });
     const currentUser = useCurrentUser();
     const { id } = useParams();
-    const { setYakfileData, handleFollow } = useSetYakfileData();
+    const { setYakfileData, handleFollow, handleUnfollow } = useSetYakfileData();
     const { pageYakfile } = useYakfileData();
     const [yakfile] = pageYakfile.results;
     const is_author = currentUser?.username === yakfile?.author;
@@ -75,7 +75,7 @@ function YakfilePage() {
                 <Col lg={3} className="text-lg-right">
                     {currentUser && !is_author && (
                         yakfile?.following_id ? (
-                            <Button className={btnStyles.btn}>Unfollow</Button>
+                            <Button className={btnStyles.btn} onClick={() => handleUnfollow(yakfile)}>Unfollow</Button>
                         ) : (
                             <Button className={btnStyles.btn} onClick={() => handleFollow(yakfile)}>Follow</Button>
                         ))}

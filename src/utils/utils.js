@@ -24,9 +24,21 @@ export const followHelper = (yakfile, clickedYakfile, following_id) => {
             follower_count: yakfile.follower_count + 1,
             following_id,
         }
-        : yakfile.is_owner
+        : yakfile.is_author
             ?
             { ...yakfile, following_count: yakfile.following_count + 1 }
             :
             yakfile;
 };
+
+export const unfollowHelper = (yakfile, clickedYakfile) => {
+    return yakfile.id === clickedYakfile.id
+        ? {
+            ...yakfile,
+            follower_count: yakfile.follower_count - 1,
+            following_id: null,
+        }
+        : yakfile.is_author
+            ? { ...yakfile, following_count: yakfile.following_count - 1 }
+            : yakfile;
+}
