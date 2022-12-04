@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
+import { setTokenTimestamp } from '../../utils/utils';
 
 const LoginForm = () => {
     const setCurrentUser = useSetCurrentUser();
@@ -37,6 +38,7 @@ const LoginForm = () => {
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', loginData)
             setCurrentUser(data.user);
+            setTokenTimestamp(data);
             navigate(-1)
         } catch (err) {
             setErrors(err.response?.data)

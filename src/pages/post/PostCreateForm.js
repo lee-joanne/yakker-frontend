@@ -12,11 +12,9 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { useRedirect } from '../../hooks/useRedirect';
 
 const PostCreateForm = () => {
-    useRedirect('loggedOut');
+    useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
-
     const currentUser = useCurrentUser();
-
     const imageInput = useRef(null);
 
     const [postData, setPostData] = useState({
@@ -24,8 +22,8 @@ const PostCreateForm = () => {
         content: "",
         image: ""
     });
-    const { title, content, image } = postData;
 
+    const { title, content, image } = postData;
     const navigate = useNavigate();
 
     const handleChange = (event) => {
