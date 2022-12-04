@@ -42,7 +42,7 @@ const Comment = (props) => {
                 results: prevComments.results.map((comment) => {
                     return comment.id === id
                         ? { ...comment, comment_reyakks_count: comment.comment_reyakks_count + 1, comment_reyakks_id: data.id }
-                        : post;
+                        : comment;
                 }),
             }));
         } catch (err) {
