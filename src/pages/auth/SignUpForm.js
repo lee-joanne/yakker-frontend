@@ -7,8 +7,10 @@ import shadowStyles from "../../App.module.css";
 import { Form, Button, Image, Row, Container, Col, Alert } from "react-bootstrap";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const SignUpForm = () => {
+    useRedirect('loggedIn')
     const [signUpData, setSignUpData] = useState({
         username: "",
         password1: "",

@@ -8,9 +8,11 @@ import { Form, Button, Image, Row, Container, Col, Alert } from "react-bootstrap
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const LoginForm = () => {
     const setCurrentUser = useSetCurrentUser();
+    useRedirect('loggedIn')
 
     const [loginData, setloginData] = useState({
         username: "",
@@ -35,7 +37,7 @@ const LoginForm = () => {
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', loginData)
             setCurrentUser(data.user);
-            navigate('/')
+            navigate(-1)
         } catch (err) {
             setErrors(err.response?.data)
             if (err.response?.status === 500) {

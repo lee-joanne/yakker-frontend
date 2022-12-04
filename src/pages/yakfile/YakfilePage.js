@@ -15,7 +15,6 @@ import styles from "../../styles/YakfilePagePopular.module.css";
 import { useSetYakfileData, useYakfileData } from "../../contexts/YakfileDataContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-
 function YakfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
     const navigate = useNavigate();
@@ -83,9 +82,9 @@ function YakfilePage() {
                     {yakfile?.is_author &&
                         <>
                             <div>
-                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit yakfile</Tooltip>}><i className={`fa-solid fa-user-pen ml-1 ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit`) }}></i></OverlayTrigger>
+                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit yakfile</Tooltip>}><i className={`fa-solid fa-file-pen ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit`) }}></i></OverlayTrigger>
                                 <span className="text-dark ml-1 mr-1"> | </span>
-                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to change username</Tooltip>}><i className={`fa-solid fa-signature ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/username`) }}></i></OverlayTrigger>
+                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to change username</Tooltip>}><i className={`fa-solid fa-user-pen ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/username`) }}></i></OverlayTrigger>
                                 <span className="text-dark ml-1 mr-1"> | </span>
                                 <OverlayTrigger placement="top" overlay={<Tooltip>Click to change password</Tooltip>}><i className={`fa-solid fa-lock ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/password`) }} ></i></OverlayTrigger>
                             </div>

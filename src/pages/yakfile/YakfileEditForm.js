@@ -41,6 +41,9 @@ const YakfileEditForm = () => {
                 } catch (err) {
                     console.log(err);
                     navigate("/");
+                    if (err.response?.status === 500) {
+                        navigate('/500')
+                    }
                 }
             } else {
                 navigate("/");

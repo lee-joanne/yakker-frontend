@@ -9,9 +9,10 @@ import appStyles from "./../../App.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { useNavigate } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const PostCreateForm = () => {
-
+    useRedirect('loggedOut');
     const [errors, setErrors] = useState({});
 
     const currentUser = useCurrentUser();
