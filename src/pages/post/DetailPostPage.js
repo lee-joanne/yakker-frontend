@@ -11,6 +11,7 @@ import Comment from '../comment/Comment';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import PopularYakfiles from '../yakfile/PopularYakfiles';
 
 const DetailPostPage = () => {
     const { id } = useParams();
@@ -38,7 +39,7 @@ const DetailPostPage = () => {
     return (
         <Row>
             <Col className={styles.HeaderText} lg={8}>
-                <p>Popular profiles</p>
+                <PopularYakfiles mobile />
                 <Post {...post.results[0]} setPost={setPost} detailedPostPage />
                 <Container className={`bg-white p-3 ${styles.ContainerBox}`}>
                     <p className="text-center">Comments</p>
@@ -75,10 +76,8 @@ const DetailPostPage = () => {
                     )}
                 </Container>
             </Col>
-            <Col className={styles.HeaderText} lg={3}>
-                <p>
-                    Popular profiles for desktop
-                </p>
+            <Col className={`${styles.HeaderText} mt-3`} lg={4}>
+                <PopularYakfiles />
             </Col>
         </Row>
     )

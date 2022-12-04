@@ -105,14 +105,14 @@ const Post = (props) => {
                             )}
                         </div>
                     </Col>
-                    <Col><div className="text-right">Updated at: {updated_at}</div></Col>
+                    <Col><div className={`text-right ${styles.PostFontColor}`}>Updated at: {updated_at}</div></Col>
                 </Row>
             </Card.Header>
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Link className={styles.ToDetailPost} to={`/post/${id}`}>{title && <Card.Text>{title}</Card.Text>}</Link>
                 {content && <Card.Text className={`${styles.Content} mt-2`}> {content} </Card.Text>}
-                <div>
+                <div className={styles.PostFontColor}>
                     {is_author ? (
                         <OverlayTrigger placement="top" overlay={<Tooltip>You can't reyakk your own posts!</Tooltip>}>
                             <i className="far fa-heart" />

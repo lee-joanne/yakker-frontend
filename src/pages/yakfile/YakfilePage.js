@@ -86,15 +86,17 @@ function YakfilePage() {
             <hr />
             <p className="text-center">{yakfile?.author}'s posts</p>
             {yakfilePosts.results.length ? (
-                <InfiniteScroll
-                    children={yakfilePosts.results.map((post) => (
-                        <Post key={post.id} {...post} setPosts={setYakfilePosts} />
-                    ))}
-                    dataLength={yakfilePosts.results.length}
-                    loader={<Asset spinner />}
-                    hasMore={!!yakfilePosts.next}
-                    next={() => fetchMoreData(yakfilePosts, setYakfilePosts)}
-                />
+                <div className={styles.PageFont}>
+                    <InfiniteScroll
+                        children={yakfilePosts.results.map((post) => (
+                            <Post key={post.id} {...post} setPosts={setYakfilePosts} />
+                        ))}
+                        dataLength={yakfilePosts.results.length}
+                        loader={<Asset spinner />}
+                        hasMore={!!yakfilePosts.next}
+                        next={() => fetchMoreData(yakfilePosts, setYakfilePosts)}
+                    />
+                </div>
             ) : (
                 <Container className={"text-center d-flex justify-content-center p-4"}>
                     <Asset src={NoResults} height={100} width={100} message={`No results found, ${yakfile?.author} hasn't posted yet.`} />

@@ -1,12 +1,14 @@
 .Content {
     font-family: 'Raleway', sans-serif;
+    color: #336A86;
 }
 
 .YakfileLink {
     color: black;
 }
 
-.ToDetailPost {
+.ToDetailPost,
+.PostFontColor {
     color: #336A86;
 }
 
