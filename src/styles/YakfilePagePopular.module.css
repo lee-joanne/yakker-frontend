@@ -10,3 +10,12 @@
 .PageFont {
     font-family: 'Fredoka One', cursive;
 }
+
+.EditDeleteIcon:hover {
+    cursor: pointer;
+    color: #8EAEC4;
+}
+
+.EditDeleteIcon {
+    color: grey;
+}

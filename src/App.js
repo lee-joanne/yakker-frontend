@@ -16,6 +16,9 @@ import EditPostForm from './pages/post/EditPostForm';
 import About from './pages/about/About';
 import YakfilePage from './pages/yakfile/YakfilePage';
 import Page500 from './components/Page500';
+import UsernameForm from './pages/yakfile/UsernameForm';
+import UserPasswordForm from './pages/yakfile/UserPasswordForm';
+import YakfileEditForm from './pages/yakfile/YakfileEditForm';
 
 function App() {
   const currentUser = useCurrentUser();
@@ -36,6 +39,9 @@ function App() {
           <Route exact path="post/:id" element={<DetailPostPage />} />
           <Route exact path="post/:id/edit" element={<EditPostForm />} />
           <Route exact path="/yakfile/:id" element={<YakfilePage />} />
+          <Route exact path="/yakfile/:id/edit/username" element={<UsernameForm />} />
+          <Route exact path="/yakfile/:id/edit/password" element={<UserPasswordForm />} />
+          <Route exact path="/yakfile/:id/edit" element={<YakfileEditForm />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/500" element={<Page500 />} />
         </Routes>

@@ -1,6 +1,6 @@
 // Yakfile page functionality credit goes to CI's Moments Project
 import React, { useEffect, useState } from "react";
-import { Col, Row, Container, Image, Button } from "react-bootstrap";
+import { Col, Row, Container, Image, Button, Tooltip, OverlayTrigger } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
 import shadowStyles from "../../App.module.css";
@@ -14,6 +14,7 @@ import NoResults from "../../assets/no-results.png";
 import styles from "../../styles/YakfilePagePopular.module.css";
 import { useSetYakfileData, useYakfileData } from "../../contexts/YakfileDataContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+
 
 function YakfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -113,6 +114,16 @@ function YakfilePage() {
     return (
         <Container>
             <PopularYakfiles mobile />
+            {yakfile?.is_author &&
+                <>
+                    <div>
+                        <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit yakfile</Tooltip>}><i className={`fa-solid fa-user-pen ml-1 ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit`) }}></i></OverlayTrigger>
+                        <span className="text-dark ml-1 mr-1"> | </span>
+                        <OverlayTrigger placement="top" overlay={<Tooltip>Click to change username</Tooltip>}><i className={`fa-solid fa-signature ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/username`) }}></i></OverlayTrigger>
+                        <span className="text-dark ml-1 mr-1"> | </span>
+                        <OverlayTrigger placement="top" overlay={<Tooltip>Click to change password</Tooltip>}><i className={`fa-solid fa-lock ${styles.EditDeleteIcon}`} onClick={() => { navigate(`/yakfile/${id}/edit/password`) }} ></i></OverlayTrigger>
+                    </div>
+                </>}
             <Row>
                 <Col className={`bg-white py-2 p-0 p-lg-2 ${shadowStyles.Shadow}`} lg={8}>
                     <Container>

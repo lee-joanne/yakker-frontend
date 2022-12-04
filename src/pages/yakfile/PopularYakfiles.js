@@ -5,13 +5,13 @@ import styles from "../../App.module.css";
 import Asset from '../../components/Asset';
 import { useYakfileData } from '../../contexts/YakfileDataContext';
 import Yakfile from './Yakfile';
-import fontStyle from "../../styles/YakfilePagePopular.module.css";
+import yakfileStyles from "../../styles/YakfilePagePopular.module.css";
 
 const PopularYakfiles = ({ mobile }) => {
     const { popularYakfiles } = useYakfileData();
 
     return (
-        <Card className={`bg-white ${styles.Shadow} ${fontStyle.PopularYakfileFont}
+        <Card className={`bg-white ${styles.Shadow} ${yakfileStyles.PopularYakfileFont}
         ${mobile && "d-lg-none text-center mb-3"}`}>
             {popularYakfiles.results.length ? (
                 <>
