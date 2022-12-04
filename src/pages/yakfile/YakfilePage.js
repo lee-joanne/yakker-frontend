@@ -5,14 +5,19 @@ import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
 import shadowStyles from "../../App.module.css";
 import PopularYakfiles from "./PopularYakfiles";
+import Post from "../post/Post";
+import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import NoResults from "../../assets/no-results.png";
 import styles from "../../styles/YakfilePagePopular.module.css";
 import { useSetYakfileData, useYakfileData } from "../../contexts/YakfileDataContext";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function YakfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
+    const [yakfilePosts, setYakfilePosts] = useState({ results: [] });
     const currentUser = useCurrentUser();
     const { id } = useParams();
     const setYakfileData = useSetYakfileData();
@@ -20,22 +25,23 @@ function YakfilePage() {
     const [yakfile] = pageYakfile.results;
     const is_author = currentUser?.username === yakfile?.author;
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [{ data: pageYakfile }] = await Promise.all([
-                    axiosReq.get(`/yakfile/${id}`)
-                ])
+                const [{ data: pageYakfile }, { data: yakfilePosts }] = await Promise.all([
+                    axiosReq.get(`/yakfile/${id}`),
+                    axiosReq.get(`/post/?author__yakfile=${id}`),
+                ]);
                 setYakfileData(prevState => ({
                     ...prevState,
-                    pageYakfile: { results: [pageYakfile] }
-                }))
+                    pageYakfile: { results: [pageYakfile] },
+                }));
+                setYakfilePosts(yakfilePosts);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err)
             }
-        }
+        };
         fetchData()
     }, [id, setYakfileData]);
 
@@ -78,8 +84,23 @@ function YakfilePage() {
     const mainYakfilePosts = (
         <>
             <hr />
-            <p className="text-center">Profile owner's posts</p>
-            <hr />
+            <p className="text-center">{yakfile?.author}'s posts</p>
+            {yakfilePosts.results.length ? (
+                <InfiniteScroll
+                    children={yakfilePosts.results.map((post) => (
+                        <Post key={post.id} {...post} setPosts={setYakfilePosts} />
+                    ))}
+                    dataLength={yakfilePosts.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!yakfilePosts.next}
+                    next={() => fetchMoreData(yakfilePosts, setYakfilePosts)}
+                />
+            ) : (
+                <Container className={"text-center d-flex justify-content-center p-4"}>
+                    <Asset src={NoResults} height={100} width={100} message={`No results found, ${yakfile?.author} hasn't posted yet.`} />
+                </Container>
+            )
+            }
         </>
     );
 

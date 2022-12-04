@@ -11,7 +11,7 @@ const PopularYakfiles = ({ mobile }) => {
     const { popularYakfiles } = useYakfileData();
 
     return (
-        <Card className={`bg-white mt-3 ${styles.Shadow} ${fontStyle.PopularYakfileFont}
+        <Card className={`bg-white ${styles.Shadow} ${fontStyle.PopularYakfileFont}
         ${mobile && "d-lg-none text-center mb-3"}`}>
             {popularYakfiles.results.length ? (
                 <>
@@ -25,7 +25,7 @@ const PopularYakfiles = ({ mobile }) => {
                             )))}
                         </Card.Body>
                     ) : (
-                        <Card.Body>
+                        <Card.Body className="pt-2 pb-2">
                             {popularYakfiles.results.map((yakfile => (
                                 <Yakfile key={yakfile.id} yakfile={yakfile} />
                             )))}

@@ -29,6 +29,6 @@ h1,
 /* Media queries for mobile-sized screens */
 @media only screen and (max-width: 600px) {
     .App {
-        padding-top: 45px;
+        padding-top: 35px;
     }
 }
