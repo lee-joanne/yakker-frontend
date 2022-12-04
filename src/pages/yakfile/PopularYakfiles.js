@@ -11,7 +11,7 @@ const PopularYakfiles = ({ mobile }) => {
     const { popularYakfiles } = useYakfileData();
 
     return (
-        <Card className={`bg-white ${styles.Shadow} ${yakfileStyles.PopularYakfileFont}
+        <Card className={`bg-white ${styles.Shadow} ${yakfileStyles.YakfileFont}
         ${mobile && "d-lg-none text-center mb-3"}`}>
             {popularYakfiles.results.length ? (
                 <>

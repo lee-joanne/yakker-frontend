@@ -1,4 +1,4 @@
-.PopularYakfileFont {
+.YakfileFont {
     font-family: 'Raleway', sans-serif;
 }
 
@@ -9,6 +9,10 @@
 
 .PageFont {
     font-family: 'Fredoka One', cursive;
+}
+
+.BlueFont {
+    color: #336A86;
 }
 
 .EditDeleteIcon:hover {

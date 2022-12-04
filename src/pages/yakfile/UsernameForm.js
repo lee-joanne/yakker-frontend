@@ -13,6 +13,7 @@ import {
     useCurrentUser,
     useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
+import styles from "../../styles/YakfilePagePopular.module.css";
 
 const UsernameForm = () => {
     const [username, setUsername] = useState("");
@@ -46,6 +47,9 @@ const UsernameForm = () => {
         } catch (err) {
             console.log(err);
             setErrors(err.response?.data);
+            if (err.response?.status === 500) {
+                navigate('/500')
+            }
         }
     };
 
@@ -56,7 +60,7 @@ const UsernameForm = () => {
                 <Container>
                     <Form onSubmit={handleSubmit} className="my-2">
                         <Form.Group>
-                            <Form.Label>Change username</Form.Label>
+                            <Form.Label className={`${styles.PageFont} ${styles.BlueFont}`}>Change username</Form.Label>
                             <Form.Control
                                 placeholder="username"
                                 type="text"
