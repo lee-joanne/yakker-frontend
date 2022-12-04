@@ -100,7 +100,7 @@ const Comment = (props) => {
     return (
         <Card className="mb-3">
             <Card.Header>
-                <Link to={`/profiles/${yakfile_id}`}>
+                <Link to={`/yakfile/${yakfile_id}`}>
                     <Avatar src={yakfile_image} />
                 </Link>
                 <span className={styles.Commenter}>{commenter}</span>
