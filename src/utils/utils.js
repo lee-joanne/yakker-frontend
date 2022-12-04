@@ -1,4 +1,4 @@
-// Infinite scroll code credit goes to CI's Moments Project
+// Infinite scroll and followhelper code credit goes to CI's Moments Project
 import { axiosReq } from "../api/axiosDefaults";
 
 export const fetchMoreData = async (resource, setResource) => {
@@ -14,4 +14,19 @@ export const fetchMoreData = async (resource, setResource) => {
             }, prevResource.results),
         }));
     } catch (err) { }
+};
+
+export const followHelper = (yakfile, clickedYakfile, following_id) => {
+    return yakfile.id === clickedYakfile.id
+        ?
+        {
+            ...yakfile,
+            follower_count: yakfile.follower_count + 1,
+            following_id,
+        }
+        : yakfile.is_owner
+            ?
+            { ...yakfile, following_count: yakfile.following_count + 1 }
+            :
+            yakfile;
 };

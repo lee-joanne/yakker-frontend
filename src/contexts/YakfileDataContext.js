@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from './CurrentUserContext';
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
+import { followHelper } from "../utils/utils";
 
 const YakfileDataContext = createContext();
 const SetYakfileDataContext = createContext();
@@ -15,6 +16,31 @@ export const YakfileDataProvider = ({ children }) => {
     });
     const currentUser = useCurrentUser();
     const navigate = useNavigate();
+
+    const handleFollow = async (clickedYakfile) => {
+        try {
+            const { data } = await axiosRes.post("/follower/", {
+                followed_user: clickedYakfile.id,
+            });
+
+            setYakfileData((prevState) => ({
+                ...prevState,
+                pageYakfile: {
+                    results: prevState.pageYakfile.results.map((yakfile) =>
+                        followHelper(yakfile, clickedYakfile, data.id)
+                    ),
+                },
+                popularYakfiles: {
+                    ...prevState.popularYakfiles,
+                    results: prevState.popularYakfiles.results.map((yakfile) =>
+                        followHelper(yakfile, clickedYakfile, data.id)
+                    ),
+                },
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
         const handleMount = async () => {
@@ -38,7 +64,7 @@ export const YakfileDataProvider = ({ children }) => {
 
     return (
         <YakfileDataContext.Provider value={yakfileData}>
-            <SetYakfileDataContext.Provider value={setYakfileData}>
+            <SetYakfileDataContext.Provider value={{ setYakfileData, handleFollow }}>
                 {children}
             </SetYakfileDataContext.Provider>
         </YakfileDataContext.Provider>

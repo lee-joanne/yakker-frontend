@@ -29,7 +29,6 @@ const Post = (props) => {
     const currentUser = useCurrentUser();
     const is_author = currentUser?.username === author
     const navigate = useNavigate();
-    const [deleteStatus, setDeleteStatus] = useState(undefined);
 
     const handleReyakks = async () => {
         try {
@@ -76,30 +75,17 @@ const Post = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/post/${id}`);
-            setDeleteStatus({ type: 'success' });
             detailedPostPage ? navigate('/') : navigate(0);
         } catch (err) {
             console.log(err);
             if (err.response?.status === 500) {
                 navigate('/500')
             }
-            setDeleteStatus({ type: 'err', err });
         }
     };
 
     return (
         <Card className={`mb-3 ${shadowStyles.Shadow}`}>
-            <>
-                {deleteStatus?.type === 'success' &&
-                    <Alert key="success" variant="success">
-                        Post successfully deleted
-                    </Alert>}
-                {deleteStatus?.type === 'error' && (
-                    <Alert key="danger" variant="danger">
-                        Sorry, we couldn't delete your post. Please try again.
-                    </Alert>
-                )}
-            </>
             <Card.Header>
                 <Row>
                     <Col>

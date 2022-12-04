@@ -27,7 +27,6 @@ const Comment = (props) => {
 
     const [editForm, setEditForm] = useState(false);
     const currentUser = useCurrentUser();
-    const [deleteStatus, setDeleteStatus] = useState(undefined);
     const is_commenter = currentUser?.username === commenter;
     const navigate = useNavigate();
 
@@ -76,7 +75,6 @@ const Comment = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/comment/${id}`);
-            setDeleteStatus({ type: 'success' });
             setPost((prevPost) => ({
                 results: [
                     {
@@ -94,73 +92,59 @@ const Comment = (props) => {
             if (err.response?.status === 500) {
                 navigate('/500')
             }
-            setDeleteStatus({ type: 'err', err });
         }
     };
 
     return (
-        <div>
-            <>
-                {deleteStatus?.type === 'success' &&
-                    <Alert key="success" variant="success">
-                        Comment successfully deleted
-                    </Alert>}
-                {deleteStatus?.type === 'error' && (
-                    <Alert key="danger" variant="danger">
-                        Sorry, we couldn't delete your comment. Please try again.
-                    </Alert>
-                )}
-            </>
-            <Card className="mb-3">
-                <Card.Header>
-                    <Link to={`/profiles/${yakfile_id}`}>
-                        <Avatar src={yakfile_image} />
-                    </Link>
-                    <span className={styles.Commenter}>{commenter}</span>
-                    <span className={styles.Date}>{updated_at}</span>
-                    <div className="text-right">
-                        {is_commenter ? (
-                            <OverlayTrigger placement="top" overlay={<Tooltip>You can't reyakk your own comments!</Tooltip>}>
-                                <i className="far fa-heart" />
-                            </OverlayTrigger>
-                        ) : comment_reyakks_id ? (
-                            <span onClick={handleUnReyakks}><i className={`fa-solid fa-heart ${reyakkStyles.Reyakked}`}></i></span>
-                        ) : currentUser ? (
-                            <span onClick={handleReyakks}><i className={`far fa-heart ${reyakkStyles.ReyakkHover}`} /></span>
-                        ) : (
-                            <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like posts!</Tooltip>}><i className="far fa-heart" /></OverlayTrigger>
-                        )}
-                        {comment_reyakks_count}
-                    </div>
-                    {editForm ? (
-                        <CommentEditForm
-                            id={id}
-                            yakfile_id={yakfile_id}
-                            content={content}
-                            yakfileImage={yakfile_image}
-                            setComments={setComments}
-                            setEditForm={setEditForm}
-                            updated_at={updated_at}
-                            post={post}
-                        />
+        <Card className="mb-3">
+            <Card.Header>
+                <Link to={`/profiles/${yakfile_id}`}>
+                    <Avatar src={yakfile_image} />
+                </Link>
+                <span className={styles.Commenter}>{commenter}</span>
+                <span className={styles.Date}>{updated_at}</span>
+                <div className="text-right">
+                    {is_commenter ? (
+                        <OverlayTrigger placement="top" overlay={<Tooltip>You can't reyakk your own comments!</Tooltip>}>
+                            <i className="far fa-heart" />
+                        </OverlayTrigger>
+                    ) : comment_reyakks_id ? (
+                        <span onClick={handleUnReyakks}><i className={`fa-solid fa-heart ${reyakkStyles.Reyakked}`}></i></span>
+                    ) : currentUser ? (
+                        <span onClick={handleReyakks}><i className={`far fa-heart ${reyakkStyles.ReyakkHover}`} /></span>
                     ) : (
-                        null
+                        <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like posts!</Tooltip>}><i className="far fa-heart" /></OverlayTrigger>
                     )}
-                    {is_commenter && !editForm && (
-                        <>
-                            <div className="text-right">
-                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit comment</Tooltip>}><i className={`fa-solid fa-pen-to-square ml-1 ${styles.EditDeleteIcon}`} onClick={handleEdit}></i></OverlayTrigger>
-                                <span className="text-dark ml-1 mr-1"> | </span>
-                                <OverlayTrigger placement="top" overlay={<Tooltip>Click to delete comment</Tooltip>}><i className={`fa-solid fa-trash ${styles.EditDeleteIcon}`} onClick={handleDelete} ></i></OverlayTrigger>
-                            </div>
-                        </>
-                    )}
-                </Card.Header>
-                <Card.Body>
-                    <p>{content}</p>
-                </Card.Body>
-            </Card >
-        </div >
+                    {comment_reyakks_count}
+                </div>
+                {editForm ? (
+                    <CommentEditForm
+                        id={id}
+                        yakfile_id={yakfile_id}
+                        content={content}
+                        yakfileImage={yakfile_image}
+                        setComments={setComments}
+                        setEditForm={setEditForm}
+                        updated_at={updated_at}
+                        post={post}
+                    />
+                ) : (
+                    null
+                )}
+                {is_commenter && !editForm && (
+                    <>
+                        <div className="text-right">
+                            <OverlayTrigger placement="top" overlay={<Tooltip>Click to edit comment</Tooltip>}><i className={`fa-solid fa-pen-to-square ml-1 ${styles.EditDeleteIcon}`} onClick={handleEdit}></i></OverlayTrigger>
+                            <span className="text-dark ml-1 mr-1"> | </span>
+                            <OverlayTrigger placement="top" overlay={<Tooltip>Click to delete comment</Tooltip>}><i className={`fa-solid fa-trash ${styles.EditDeleteIcon}`} onClick={handleDelete} ></i></OverlayTrigger>
+                        </div>
+                    </>
+                )}
+            </Card.Header>
+            <Card.Body>
+                <p>{content}</p>
+            </Card.Body>
+        </Card >
     );
 };
 

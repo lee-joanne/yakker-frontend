@@ -9,3 +9,14 @@
     color: #336A86;
     cursor: pointer;
 }
+
+.btnUnfollow {
+    color: #336A86;
+    background-color: white;
+    border-color: #336A86;
+}
+
+.btnUnfollow:hover {
+    background-color: #336A86;
+    color: white;
+}
