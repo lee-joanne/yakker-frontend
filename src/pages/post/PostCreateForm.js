@@ -112,7 +112,7 @@ const PostCreateForm = () => {
                         ))}
                         <Form.Group className="mb-3">
                             <Form.Label className={styles.HeaderText}>Content</Form.Label>
-                            <Form.Control as="textarea" rows={6} name="content" placeholder={`What's on ${currentUser.username}'s mind?`} value={content} onChange={handleChange} />
+                            <Form.Control as="textarea" rows={6} name="content" placeholder={`What's on ${currentUser?.username}'s mind?`} value={content} onChange={handleChange} />
                         </Form.Group>
                         {errors.content?.map((message, idx) => (
                             <Alert variant="warning" key={idx}>
