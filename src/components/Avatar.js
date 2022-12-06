@@ -1,13 +1,20 @@
-import React from 'react'
-import styles from '../styles/Avatar.module.css'
+import React from "react";
 
-const Avatar = ({ src, height = 45, yakfile }) => {
-    return (
-        <span>
-            <img className={styles.Avatar} src={src} height={height} width={height} alt="avatar" />
-            {yakfile}
-        </span>
-    )
-}
+import styles from "../styles/Avatar.module.css";
 
-export default Avatar
+const Avatar = ({ height = 45, src, yakfile }) => {
+  return (
+    <span>
+      <img
+        alt="avatar"
+        className={styles.Avatar}
+        height={height}
+        src={src}
+        width={height}
+      />
+      {yakfile}
+    </span>
+  );
+};
+
+export default Avatar;

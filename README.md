@@ -1,6 +1,23 @@
 
 # Yakker - Front-End
 
+ ![Screenshot of Am I Responsive](documentation/amiresponsive.png)
+
+Yakker is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like (reyakk) other users' posts and comments, and change their profile (yakfile) photo and profile biography. Yakker is designed to allow users to make posts about whatever they want, and be able to engage with other users by commenting on other posts/comments and reyakking to posts/comments. This repository contains the front-end of Yakker, created with HTML, CSS, Bootstrap, and React. 
+
+`'yakfile' = 'profile'`
+
+`'reyakk' = 'like'`
+
+## Deployed Link
+
+- [Yakker Front-End Deployed Link](https://yakker-front-end.herokuapp.com/)
+
+## Back End Links
+
+- [Yakker Back End Deployed Link](https://yakker-backend.herokuapp.com/)
+- [Yakker Back End GitHub](https://github.com/lee-joanne/yakker-backend)
+
 ## User Experience (UX)
 
 ### User Stories
@@ -84,12 +101,75 @@
 
     2. As a **user** I can **easily find the 'About' link in the nav bar** so that **I can learn about the purpose of this website which will be crucial as a new user coming to the website.**
 
+### Site Goals
+
+- The goals of the website is to serve as a social media platform for all ages of different users. Users should be able to create an account without an email address to not compromise their personal data. Users are able to create accounts, login, post whatever they wish with a title, content, and image, make comments on other users' posts, and reyakk (like) other users' posts and comments. Users also have a freedom to personalize their yakfile (profile) by adding their own yakfile display photo and changing their 'about me' section. Users have the freedom to edit and delete their posts and comments. A site like this is needed because, today, security is a huge issue. Making a social media account with Twitter, Facebook, Reddit typically ask for your email address and you would have to give away personal information. With Yakker, there's no ties to you and your personal life. You create an account, post anonymously and at your free will, and continue living your secured life. 
+
+### Kanban Board and MosCow Prioritization
+
+I used a kanban board to help organize the user stories and tasks required for this project. When each task was in progress, they would be dragged to the 'in progress' column. When they were completed, they were dragged to the 'done' column. I also utilized MoSCoW prioritization by labelling each task as either Must Have or Should Have. I prioritized finishing the Must Have tasks first and then worked on the Should Have tasks. I managed to complete all of the tasks in the end and all user stories are successfully covered.
+
+<details>
+<summary>Screenshot of Kanban Board Part 1</summary>
+<img src='documentation/kanban-1.png' alt='kanban board part 1'>
+</details>
+
+<details>
+<summary>Screenshot of Kanban Board Part 2</summary>
+<img src='documentation/kanban-2.png' alt='kanban board part 2'>
+</details>
+
+<details>
+<summary>Screenshot of Kanban Board Part 3</summary>
+<img src='documentation/kanban-3.png' alt='kanban board part 3'>
+</details>
+
+<details>
+<summary>Screenshot of Kanban Board Part 4</summary>
+<img src='documentation/kanban-4.png' alt='kanban board part 4'>
+</details>
+
+<details>
+<summary>Screenshot of Kanban Board Part 5</summary>
+<img src='documentation/kanban-5.png' alt='kanban board part 5'>
+</details>
+
+<details>
+<summary>Screenshot of Kanban Board Part 6</summary>
+<img src='documentation/kanban-6.png' alt='kanban board part 6'>
+</details>
+
+<details>
+<summary>Screenshot of MoSCoW Prioritization Part 1</summary>
+<img src='documentation/moscow-1.png' alt='moscow part 1'>
+</details>
+
+<details>
+<summary>Screenshot of MoSCoW Prioritization Part 2</summary>
+<img src='documentation/moscow-2.png' alt='moscow part 2'>
+</details>
+
+<details>
+<summary>Screenshot of MoSCoW Prioritization Part 3</summary>
+<img src='documentation/moscow-3.png' alt='moscow part 3'>
+</details>
 
 ### Design
 
 - Colour Scheme:
 
- - Typography
+    - Typography: The fonts are taken from [Google Fonts](https://fonts.google.com/about).
+
+        1. 'Fredoka One', cursive; is used as the primary text for this project. This font is used for headers, for post titles, comments, the navigation bar, etc. This font is used to help with information hierarchy on what texts of the project are most important. This font is chosen because it is fun and modern and suits the vibe of the social media platform.
+        2. 'Raleway', sans-serif; is used as a secondary text for this project. This font is used for the post content, popular yakfile usernames to follow, user yakfile detailed section (about me, number of posts, number of followers, number following), etc. It is selected for it's simplistic look to help enhance readibility on longer paragraphs of text, hence why it is used for post content. 
+
+    - Colors: The colours I have used for this website are outlined in the screenshot below. This colour scheme was developed by[Logo.com](https://logo.com/homepage). The primary colour was mainly used for text, the secondary colour was mainly used for when links or buttons are being hovered for contrast, and the accent was used for some text such as the username of the current logged in user and which link in the navigation bar is active.
+
+     ![Screenshot of Yakker colour scheme](documentation/yakker-colourscheme.png)
+
+    - Logo: The logo is created using [Logo.com](https://logo.com/homepage). The colour scheme of the logo matches the rest of the website. 
+
+    ![Screenshot of Yakker logo](documentation/yakker-logo.png)
 
 ### Wireframes
 
@@ -167,8 +247,6 @@ Profile Page:
 <summary>Screenshot of Tablet Wireframe: Profile Page</summary>
 <img src='documentation/wireframes/wireframe-profile-tablet.png' alt='tablet wireframe'>
 </details>
-
-### Kanban Board
 
 ## Features
 
@@ -252,7 +330,7 @@ Profile Page:
 
 ## Testing
 
-### Validation Testing & Lighthouse
+### Validation Testing
 
 ### Manual Testing
 
@@ -305,14 +383,14 @@ Profile Page:
 
 - The following steps were taken for the cloning process: 
 
-  1. Log in to **[GitHub](https://github.com/)**.
-  2. Click on the profile icon to locate **'Your repositories'**. 
-  3. On the repository page, click on the repository you wish to clone.
-  4. Under **'Code'**, see the different cloning options, HTTPS, SSH, and GitHub CLI. Click the prefered cloning option, and then copy the link provided. 
-  5. Open **Terminal**.
-  6. In Terminal, change the current working directory to the desired location of the cloned directory.
-  7. Type git clone, and then paste the URL copied from GitHub earlier. 
-  8. Type **Enter** to create the local clone. 
+1. Log in to **[GitHub](https://github.com/)**.
+2. Click on the profile icon to locate **'Your repositories'**. 
+3. On the repository page, click on the repository you wish to clone.
+4. Under **'Code'**, see the different cloning options, HTTPS, SSH, and GitHub CLI. Click the preferred cloning option, and then copy the link provided. 
+5. Open **Terminal**.
+6. In Terminal, change the current working directory to the desired location of the cloned directory.
+7. Type git clone, and then paste the URL copied from GitHub earlier. 
+8. Type **Enter** to create the local clone. 
 
 ## Credits
 
