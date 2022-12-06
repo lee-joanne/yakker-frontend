@@ -1,7 +1,7 @@
 // Popular yakfiles functionality credit goes to CI's Moments Project
 import React from "react";
 import Card from "react-bootstrap/Card";
-import styles from "../../App.module.css";
+import shadowStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useYakfileData } from "../../contexts/YakfileDataContext";
 import Yakfile from "./Yakfile";
@@ -12,7 +12,7 @@ const PopularYakfiles = ({ mobile }) => {
 
   return (
     <Card
-      className={`bg-white ${styles.Shadow} ${yakfileStyles.YakfileFont}
+      className={`bg-white ${shadowStyles.Shadow} ${yakfileStyles.YakfileFont}
         ${mobile && "d-lg-none text-center mb-3"}`}
     >
       {popularYakfiles.results.length ? (

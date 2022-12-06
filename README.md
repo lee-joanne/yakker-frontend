@@ -577,9 +577,130 @@ User stories covered:
 
 ### Validation Testing
 
+- ESlint was downloaded following the instructions [here (credit goes to Ian Meigh)](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d). No errors were returned after running through all files (exceptions are node modules, reportWebVitals, setUpTests, json package files). The following rules were added for ESlint: 
+
+![ESlint rules](documentation/eslint-rules.png)
+
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to check CSS code, no errors were returned.
+
 ### Manual Testing
 
+- Vigorous manual testing has been taken place to test all functionality of the webite to ensure everything is in working order. These tests were performed by creating multiple accounts and testing out different features. I have used different computers, I have bugged colleagues and friends to test out the website and create posts, etc. These are lists of results of the manual testing:
+
+**Navigation Bar, Footer, and Authentication Tests**: 
+
+- Navigation bar correctly shows "Home", "About", "Sign Up", and "Login" links at the top when the user is logged out.
+- Navigation bar correctly shows "Home", "About", "Feed", "Create Post", "Reyakked", and "Log out" links at the top when the user is logged in. Navigation bar also shows current logged in user's username and avatar at the top beside the logo.
+- Logged in users successfully get redirected to homepage when trying to access `/login` or `/signup` urls.
+- Navigation bar correctly collapses in smaller screens into a hamburger icon and toggles correctly, and untoggles when user clicks away.
+- Navigation bar is correctly fixed at the top of the page regardless of user scrolling.
+- Footer is correctly fixed at the bottom fo the page regardless of user scrolling.
+- External link in footer successfully opens in a new blank page. 
+- When user is logged in, the "Feed" link will show posts by users they follow.
+- When user is logged in, the "Reyakked" link will show all the posts the user reyakked. 
+- Clicking log out will successfully log out the user, and users will know they are logged out as their username will no longer be at the top.
+- If user logs in with incorrect details, they will be prompted with a message.
+- If user tries to sign up with any fields missing, they will be prompted with a message that fields need to be added.
+- If user tries to sign up with two different passwords, they will be prompted with a message that their passwords do not match.
+
+**Homepage Tests**
+
+- Infinite scroll successfully works as the page will load when more than ten posts are present.
+- The lists of posts are all shown, with the author, date updated, author avatar, post title, image, content, number of reyakks and comments present.
+- Author and avatar of posts are able clickable and will redirect user to profile page of that user.
+- If user is logged out, hovering over reyakk button will prompt user to log in.
+- If user is logged in and NOT the author of the post, user is able to hover over reyakk button and choose to reyakk or unreyakk.
+- If user is logged in and IS the author of the post, a messsage will tell user they are not able to reyakk to their own posts.
+- Number of reyakks on the post will update accordingly and in real-time. 
+- All reyakked posts by a user will show up in the "Reyakked" link in navigation.
+- Popular Yakfiles are present on the right side on larger screens, and present at the top on smaller screens as well as the bottom to follow users. Popular Yakfiles correctly update based on who has the highest number of followers. Each username is clickable and will direct user to the profile page of the desired user. 
+- If users are logged in, the users they do not already follow will have a 'Follow' button beside the username in Popular Yakfiles.
+- If users are logged in, the users that they do follow will have an 'Unfollow' button beside the username in Popular Yakfiles.
+- Users are successfully able to search for posts based on content, title, and author. The search will take one second after the user stops typing before conducting the search. 
+- When the page is loading (the posts, the Popular Yakfiles, or when they type in a search field), the Bootstrap spinner shows successfully.
+- Homepage is fully responsive. 
+
+**Post Tests**
+
+- Logged in users are able to click "Create Post" and be redirected to the `/post/create` url to create a post. Users will then be able to add an image, title, and content. 
+- Correct validations will show if image field or title field is missing. If image uploaded is not an image, is larger than 2500px in height and in width and larger than 1MB, it will not accept it. If the user types in content larger than 300 characters in the title, an error message will show.
+- Logged out users who try to access `/post/create` url will be redirected to homepage.
+- Placeholder in post create content successfully shows the user's username.
+- Created posts successfully show up on the homepage with the correct date, username, and content shown. The newest post will always be shown at the top of homepage. 
+- Avatar and username of posts are clickable and will redirect user to the profile page.
+- Titles of the posts are clickable and will redirect user to the detailed post page. The correct post will show according to the post id: `/post/{id}`.
+- Reyakk functionality works exactly the same in detailed post view as well as homepage.
+- Comments linked to the post will show in the detailed post page (Comment tests will be discussed next).
+- Authors of the post can see the icon where they can choose to edit or delete their posts. Prompt messages will show as a ToolTip.
+- Author posts are successfully deleted when author clicks delete.
+- When author chooses to edit post, they will be redirected to the correct link with the post image, title, and content pre-populated in the form field. Users are able to change their post and have the changes saved successfully.
+- Only authors of the post can edit their own posts. Any tampering with the urls will redirect other users to the homepage.
+
+**Comment Tests**
+
+- Posts with no comments will have a message that prompts the user to login to leave a comment. If the user is logged in, it will prompt the user to leave a comement. If the user is logged out, it will prompt the user to login first.
+- The comment field successfully shows the logged in username in the content placeholder, as well as their avatar. 
+- All comments on an associated post will be shown newest first. Infinite scroll works successfully as more than ten comments will load.
+- Logged in users will be able to reyakk to comments. 
+- Logged in users will be able to hover the reyakk icon where it will turn red. Comments will be successfully reyakked when clicked, or unreyakked when click. Immediate results will show. 
+- If the author of the comment tries to reyakk to their own post, a message will show stating that users cannot reyakk to their own comments.
+- If logged out users try to reyakk to comments, a message will show stating to log in to reyakk to comments.
+- Bootstrap spinner successfully shows when comments are being retrieved. 
+- Number of comments on the post will update accordingly to the amount of comments there are.
+- Number of reyakks on the comment will update accordingly to the amount of reyakks there are.
+- Users are successfully able to delete their comments and edit their comments.
+- Only authors of the comment can view the icons where they can edit or delete.
+- Deleted comments are deleted immediately.
+- Edited comments are pre-populated with the comment content. 
+
+**Follower Tests**
+
+- Logged in users are successfully able to follow users. The amount of follows will update accordingly in detailed profile page.
+- The amount of followers will update accordingly when a user is being followed by another user.
+- In Popular Yakfiles and detailed profile page of other users, a "Follow" button will show up if the user is not following them already. An 'Unfollow' button will show up if the user is already following them. When clicking these buttons, number of follows/followers will update.
+- Posts posted by followed users will show up in the "Feed" page.
+- Popular Yakfiles will update accordingly based on who has the highest amount of followers, with the highest at the top of the list.
+- Only logged in users will view the option to follow or unfollow users.
+
+**Yakfile Tests**
+
+- Users are successfully able to access detailed profile urls of the username they click.
+- Users will see a "Follow" button for users they do not follow, and 'Unfollow' for users they already follow.
+- When users view their own profile page, they will see three icons where they can edit their profile, change username, or change password.
+- When editing profile, user will be redirected to a link with their profile image and 'about me' pre-populated. Users are successfully able to edit their photo and 'about me' page.
+- When changing username, users will be redirected to page where they can change their username. If user tries to change to username that already exists, user will be notified. When user changes username, the new username will be reflected on all associated posts, comments, etc.
+- When changing passwords, users will be redirected to a page where they can change their password. Users can type in the password and confirm. If user types in unmatching passwords, a message will show saying that passwords do not match.
+- Logged out users will not see any button to click in detailed post page where the Follow/Unfollow/edit icons are.
+- All posts by the user in their detailed profile page will show up. Infinite scroll successfully works where more than ten posts can show up at a time.
+- Post reyakks functionality works the same when viewing posts in the detailed profile page of the user.
+- Clicking on the title of the posts will still redirect user to the detailed post page of the post. 
+
+**Other Testing**
+
+- Any links within the domain that do not exist will redirect user to the 404 page.
+- Any errors in the back end or server will redirect user to the 500 page. This was tested during the back end logout bug. 
+
 ### Bugs 
+
+Many bugs have occurred during the development of the front end project. Most notable bugs are listed below:
+
+- A feature to show alert messages to the user upon successful post creation, deletion, editing, comment creation, deletion, editing, etc would have been desirable to have. I have added a deleteStatus and setDeleteStatus useState hook to try to achieve this and to set whether the result is a success or not. If it was successful, I wanted to incorporate Bootstrap alerts to notify the user. However, since the user is being redirected to homepage after success, the renders in the file would not be showing since the user is being sent to another page. I was trying to figure this out with creating a custom context or by transferring the state, but it became too complicated and did not want to risk jeopardizing the project. In the future, I wish to add this feature so users will always be communicated when their actions are successful. 
+
+- At the beginning, I was having issues with using ES6 JavaScript features such as optional chaining, destructing, the spread operator, etc. I was trying to write vanilla code in lieu of these ES6 JavaScript features but it was too time consuming and did not show good developer skills. After trying to figure out what was going on, Tutor Support was able to point out that I was running on React scripts version 2 and that I had to update to the latest version. After updating, ES6 features were working well.
+
+- I have downloaded the latest version of React Router (v6) and useHistory and Switch were no longer used in v6. I was wondering why the syntax wasn't working as per the CI Example Project and read up on the documentation on the new v6 changes. UseHistory was now useNavigate, and Switch was now Routes. I was able to change the syntax accordingly throughout the site to match v6.
+
+- There were many issues related to typos, unfortunately. When creating the code for users to reyakk to comments, I kept getting an error in the console that a key had to be assigned, and no key was assigned in DetailPostPage.js where comments are passed over. However, comments indeed had a key assigned so I was very confused as to why it was not registering the key. It turned out that when I was copying and pasting the code from Post over to Comment, I accidentally left some code as 'post' when it should have been 'comment', so I had to change it. 
+
+- When trying to use the redirect feature of having logged out users be redirected to homepage when trying ot access the Post Create page, I was getting an error in the console that currentuser could not be read as null. The expected outcome was that the logged out user should be redirected to homepage, not be shown a blank white page with an error in the console. After researching further with tutor support, it turned out that optional chaining was required when checking the current user's username. Due to the lack of optional chaining, it was not able to read the current user's username and thus returned the error.
+
+- I noticed that when trying to log out and refresh the page, the user would still remain logged in. This was difficult after including the jwt tokens and redirect to keep logged in users away from sign up and login pages by redirecting logged in users back to homepage. Since the user was still technically logged in even if it said logged out, I was not able to login as a new user since it would redirect me to the homepage. It turned out that this is a known bug with Django REST Framework and a custom logout_route was required in the back end. After adding this in, the logout feature works perfectly.
+
+- There is a known bug that this app cannot open on Apple mobile devices and most browsers other than Chrome. The bug is that when users try to log in, they will be redirected back to the login page. This bug is due to cookies not being saved in the local storage. For this bug to be fixed on Safari, "Prevent Cross-Site Tracking” will need to be turned off in settings. 
+
+- `Failed to load resource: the server responded with a status of 401 (Unauthorized)` error messages may show up in the console sometimes. `DevTools failed to load source map: Could not load content for chrome-extension://gighmmpiobklfepjocnamgkkbiglidom/browser-polyfill.js.map: System error: net::ERR_FILE_NOT_FOUND` warnings show in the console. 
+
+- Not a bug, but raising awareness that console.logs throughout the files for try and catch blocks have been commented out. 
 
 ## Deployment
 
@@ -610,11 +731,34 @@ This application has been deployed from GitHub to Heroku by following the steps 
 
 ### Code
 
+- [Code Institute Moments Project](Solutions)
+    - Functionality of the project credit goes to Code Institute. Comments are made along the project of where code is used from Code Institute's Moments project. 
+
+- [Stack Overflow](https://stackoverflow.com/)
+    - Stack Overflow was referred to many times while trying to debug code. Inspiration on front-end features and functionality was also taken from Stack Overflow.
+
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+    - React documentation was referred to many times during the development of this project.
+
+- [React Bootstrap](https://react-bootstrap.github.io/)
+    - Components from React Bootstrap were used in the project (Navigation bar, forms, cards, etc).
+
+- [Ian Meigh](https://github.com/ianmeigh/property-direct-frontend/blob/main/USERSTORIES.md)
+    - Ian Meigh has been a huge help during my project. He has helped me debug a countless number of bugs, helped me with some of the functionality of reyakking comments, and guided me through the logout bug. Ian Meigh's tutorial on ESlint was used for ESlint testing.
+
+- [Medium](https://medium.com/)
+    - Medium was referred to for information on how import multiple classes, how to use React Bootstrap syntax, etc. 
+
+- [React Router Documentation](https://v5.reactrouter.com/web/guides/quick-start)
+    - React Router documentation was referred to for the use of routes, useNavigate, and how to show the active links in navbar. 
+
 ### Acknowledgements
 
+- Thank you to Tutor Support for always being there for me, and always being patient with my questions.
 
+- Thank you to CI Slack Channel for taking time out of their day to answer my questions.
 
-
+- A huge thank you to Ian Meigh again for helping me survive the Advanced Front-End module. This project couldn't have been completed without him.  
 
 
 

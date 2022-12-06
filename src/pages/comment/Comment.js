@@ -137,7 +137,7 @@ const Comment = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
+              overlay={<Tooltip>Log in to like comments!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
