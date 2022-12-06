@@ -2,7 +2,7 @@
 
  ![Screenshot of Am I Responsive](documentation/amiresponsive.png)
 
-Yakker is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like (reyakk) other users' posts and comments, and change their profile (yakfile) photo and profile biography. Yakker is designed to allow users to make posts about whatever they want, and be able to engage with other users by commenting on other posts/comments and reyakking to posts/comments. This repository contains the front-end of Yakker, created with HTML, CSS, Bootstrap, and React. 
+Yakker is a social-media website designed to mimic the features of Twitter. Users can create an account, log in, make a post, make comments on posts, like (reyakk) other users' posts and comments, and change their profile (yakfile) photo and profile biography. Yakker is designed to allow users to make posts about whatever they want, and be able to engage with other users by commenting on other posts/comments and reyakking to posts/comments. This repository contains the front-end of Yakker, created with HTML, CSS, Bootstrap, and React. Components were reused throughout the React project as each part of the website was broken into individual components and linked together, transferring states and data. 
 
 `'yakfile' = 'profile'`
 
@@ -16,6 +16,34 @@ Yakker is a social-media website designed to mimic the features of Twitter. User
 
 - [Yakker Back End Deployed Link](https://yakker-backend.herokuapp.com/)
 - [Yakker Back End GitHub](https://github.com/lee-joanne/yakker-backend)
+
+## Table of Contents
+
+- [Yakker - Front-End](#yakker---front-end)
+  * [Deployed Link](#deployed-link)
+  * [Back End Links](#back-end-links)
+  * [User Experience (UX)](#user-experience--ux-)
+    + [User Stories](#user-stories)
+    + [Site Goals](#site-goals)
+    + [Kanban Board and MosCow Prioritization](#kanban-board-and-moscow-prioritization)
+    + [Design](#design)
+    + [Wireframes](#wireframes)
+  * [Features](#features)
+    + [Existing Features](#existing-features)
+    + [Future Features](#future-features)
+  * [Technologies Used](#technologies-used)
+    + [Languages and Packages/Libraries Used](#languages-and-packages-libraries-used)
+    + [Programs Used](#programs-used)
+  * [Testing](#testing)
+    + [Validation Testing](#validation-testing)
+    + [Manual Testing](#manual-testing)
+    + [Bugs](#bugs)
+  * [Deployment](#deployment)
+  * [Credits](#credits)
+    + [Code](#code)
+    + [Acknowledgements](#acknowledgements)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## User Experience (UX)
 
@@ -162,7 +190,7 @@ I used a kanban board to help organize the user stories and tasks required for t
         1. 'Fredoka One', cursive; is used as the primary text for this project. This font is used for headers, post titles, comments, navigation bar, etc. This font is used to help with information hierarchy on what texts of the project are most important. This font is chosen because it is fun and modern and suits the vibe of the social media platform.
         2. 'Raleway', sans-serif; is used as a secondary text for this project. This font is used for the post content, popular yakfile usernames to follow, user yakfile detailed section (about me, number of posts, number of followers, the number following), etc. It is selected for it's simplistic look to help enhance readability on longer paragraphs of text, hence why it is used for post content. 
 
-    - Colors: The colours I have used for this website are outlined in the screenshot below. This colour scheme was developed by[Logo.com](https://logo.com/homepage). The primary colour was mainly used for text, the secondary colour was mainly used for when links or buttons are being hovered for contrast, and the accent was used for some text such as the username of the current logged-in user and which link in the navigation bar is active.
+    - Colors: The colours I have used for this website are outlined in the screenshot below. This colour scheme was developed by [Logo.com](https://logo.com/homepage). The primary colour was mainly used for text, the secondary colour was mainly used for when links or buttons are being hovered for contrast, and the accent was used for some text such as the username of the current logged-in user and which link in the navigation bar is active.
 
      ![Screenshot of Yakker colour scheme](documentation/yakker-colourscheme.png)
 
@@ -251,7 +279,7 @@ Profile Page:
 
 ### Existing Features
 
-- Navigation Bar
+**Navigation Bar**
 
 ![Screenshot of Navigation Bar Logged Out](documentation/navbar-2.png)
 
@@ -259,7 +287,7 @@ Profile Page:
 
 ![Screenshot of Navigation Bar Mobile Screens](documentation/navbar-responsive.png)
 
-The navigation bar is created with React Bootstrap. Conditional rendering is used to see whether the user is logged-in or not. Depending on the logged in status, different links will appear. When the user is logged out, the user will see the option to log in, signup, and to read the 'About' of the website. When the user logs in, the user is able to see their username at the top of the screen (when clicking on it, user will be directed to their detailed page where they can edit their details), the option to go to 'Feed' (see all posts by their followed users), create a post, go to 'Reyakked' (see posts they have liked), and log out. The navigation bar is fixed at the top so it will always remain readily available when users scroll down the website. The pages are wired using React Router Dom so the navigation process is extremely quick. The active link will be black in contrast to the other links so the user knows exactly which page they are on. The navigation bar is fully responsive as it collapses into a hamburger icon on smaller screens. Users can easily log out of the website by clicking the 'Log Out' link that appears when users are signed in. 
+The navigation bar is created with React Bootstrap. Conditional rendering is used to see whether the user is logged-in or not. Depending on the logged in status, different links will appear. When the user is logged out, the user will see the option to log in, signup, and to read the 'About' of the website. When the user logs in, the user is able to see their username at the top of the screen (when clicking on it, user will be directed to their detailed page where they can edit their details), the option to go to 'Feed' (see all posts by their followed users), create a post, go to 'Reyakked' (see posts they have liked), and log out. The navigation bar is fixed at the top so it will always remain readily available when users scroll down the website. The pages are wired using React Router Dom so the navigation process is extremely quick. The active link will be black in contrast to the other links so the user knows exactly which page they are on. The navigation bar is fully responsive as it collapses into a hamburger icon on smaller screens. Users can easily log out of the website by clicking the 'Log Out' link that appears when users are signed in. The navbar was broken down into different components as each link is it's own React file. 
 
 User stories covered: 
 
@@ -275,7 +303,7 @@ User stories covered:
 
 6. As a **user** I can **easily log out** so that **I can have more security on my account.**
 
-- About Page
+**About Page**
 
 ![Screenshot of About Page](documentation/aboutpage.png)
 
@@ -285,7 +313,7 @@ User stories covered:
 
 1. As a **user** I can **easily find the 'About' link in the nav bar** so that **I can learn about the purpose of this website which will be crucial as a new user coming to the website.**
 
-- Login/Sign up Page:
+**Login/Sign up Page**
 
 ![Screenshot of Login Page](documentation/login-page.png)
 
@@ -303,7 +331,7 @@ User stories covered:
 
 3. As a **user** I can **maintain my logged-in status** so that **I will not need to constantly log in when not on the website for a few hours, and can log out manually whenever I want to log out.**
 
-- 404 Page:
+**404 Page**
 
 ![Screenshot of 404 page](documentation/404-page.png)
 
@@ -313,9 +341,9 @@ User stories covered:
 
 1. As a **user** I can **a nice 404 page consistent with the site layout** so that **I can be communicated with if I have reached an invalid web page.**
 
-- 500 Page:
+**500 Page**
 
-![Screenshot of 500 page](documentation/404-page.png)
+![Screenshot of 500 page](documentation/500-page.png)
 
 Nothing is perfect, and nothing will run smoothly forever. That's why it is very important to create a 500 page for if there are ever problems with the server or back end. Users deserve to have a good, custom-made webpage to be redirected to if there's a problem with our end. That's why I have created a custom 500 page for if the server or back end ever has any issues, they will be redirected here. I have added navigation to this 500 page in the catch(err) portion of async functions throughout the project. 
 
@@ -323,7 +351,7 @@ User stories covered:
 
 1. As a **user** I can **a nice 500 page consistent with the site layout** so that **I can be communicated with if there are issues with the website's server or backend.**
 
-- Homepage
+**Homepage**
 
 ![Screenshot of homepage](documentation/homepage.png)
 
@@ -358,7 +386,7 @@ User stories covered:
 
 10. As a **user** I **cannot edit/delete posts/comments/likes that are not mine** so that **I can be assured that my posts/comments/likes are protected and can only be changed by me.**
 
-- Footer
+**Footer**
 
 ![Screenshot of footer](documentation/footer.png)
 
@@ -406,10 +434,9 @@ User stories covered:
 
 ![Screenshot of comment section comment reyakks author](documentation/commentreyakks-author.png)
 
-
 All comments (newest first) on a specific post are viewed on the detailed view of the post. The comments will show the username, the date of the comment, how many reyakks the comment has, and the avatar of the user. Depending on users' logged-in status and whether comments are already available or not, different messages will appear. If there are no comments and the user is logged out, the comment section will encourage the user to log in or sign up to comment. If there are no comments and the user is logged in, the comment section will encourage the user to comment. Logged-in users will be able to post a comment and add their content. Authors of the comment will be able to view the 'edit' and 'delete' icons. When clicking 'delete', the user's comment will be immediately deleted. When 'edit' is clicked, users can change their comments with the content pre-populated. Users will be able to reyakk or unreyakk to other users' comments. If the author tries to reyakk to their own comment, a message will show stating that they are not able to. The comment section has infinite scroll incorporated so users will be able to stay engaged to the comments without having to click extra navigation buttons. Users can click on the avatar or username of the commenter and be directed to their profile page. Users will only be able to delete and edit their own comments. 
 
-User stories covered:
+**User stories covered**
 
 1. As a **user** I can **only like/unlike other users' posts and comments** so that **I can only show my appreciation for other posts/comments and not cheat the system by liking my own posts/comments.**
 
@@ -431,7 +458,7 @@ User stories covered:
 
 10. As a **user** I **cannot edit/delete posts/comments/likes that are not mine** so that **I can be assured that my posts/comments/likes are protected and can only be changed by me.**
 
-- Post Reyakks
+**Post Reyakks**
 
 ![Screenshot of post reyakks reyakking](documentation/postreyakks-reyakked.png)
 
@@ -448,7 +475,7 @@ User stories covered:
 
 3. As a **user** I can **remove likes on a post** so that **I can change my mind about whether I like the post or not.**
 
-- Create Post Page
+**Create Post Page**
 
 ![Screenshot of post create page](documentation/createpost-page.png)
 
@@ -460,7 +487,7 @@ User stories covered:
 
 1. As a **user** I can **create new posts** so that **I can share images, my thoughts, or what I'm doing.**
 
-- Follower
+**Follower**
 
 ![Screenshot of follower feature](documentation/follower-loggedin.png)
 
@@ -475,7 +502,7 @@ User stories covered:
 
 2. As a **user** I can **follow or unfollow other users** so that **I can see or choose to remove posts by specific users in my posts feed.**
 
-- Yakfile Page
+**Yakfile Page**
 
 ![Screenshot of yakfilepage-user](documentation/yakfilepage-user.png)
 
