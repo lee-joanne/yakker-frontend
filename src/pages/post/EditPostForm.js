@@ -132,7 +132,7 @@ const EditPostForm = () => {
                 as="textarea"
                 rows={6}
                 name="content"
-                placeholder={`What's on ${currentUser.username}'s mind?`}
+                placeholder={`What's on ${currentUser?.username}'s mind?`}
                 value={content}
                 onChange={handleChange}
               />

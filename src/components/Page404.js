@@ -16,7 +16,9 @@ const Page404 = () => {
         <img alt="Not found" src={gif} />
       </Container>
       <Container className="mt-1">
-        <p className={fontStyles.HeadingFont}>Page does not exist</p>
+        <p className={fontStyles.HeadingFont}>
+          Hmm... are you lost? This page does not exist, sorry!
+        </p>
         <Button
           className={btnStyles.Btn}
           onClick={() => navigate(-1)}

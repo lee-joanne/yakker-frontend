@@ -17,7 +17,7 @@ const Page500 = () => {
       </Container>
       <Container className="mt-1">
         <p className={fontStyles.HeadingFont}>
-          Sorry... something is wrong. Problem with the server.
+          Sorry... something is wrong. It's not you, it's us.
         </p>
         <Button
           className={btnStyles.Btn}
