@@ -188,9 +188,9 @@ I used a kanban board to help organize the user stories and tasks required for t
     - Typography: The fonts are taken from [Google Fonts](https://fonts.google.com/about).
 
         1. 'Fredoka One', cursive; is used as the primary text for this project. This font is used for headers, post titles, comments, navigation bar, etc. This font is used to help with information hierarchy on what texts of the project are most important. This font is chosen because it is fun and modern and suits the vibe of the social media platform.
-        2. 'Raleway', sans-serif; is used as a secondary text for this project. This font is used for the post content, popular yakfile usernames to follow, user yakfile detailed section (about me, number of posts, number of followers, the number following), etc. It is selected for it's simplistic look to help enhance readability on longer paragraphs of text, hence why it is used for post content. 
+        2. 'Raleway', sans-serif; is used as a secondary text for this project. This font is used for the post content, popular yakfile usernames to follow, user yakfile page (about me, number of posts, number of followers, the number following), etc. It is selected for it's simplistic look to help enhance readability on longer paragraphs of text, hence why it is used for post content. 
 
-    - Colors: The colours I have used for this website are outlined in the screenshot below. This colour scheme was developed by [Logo.com](https://logo.com/homepage). The primary colour was mainly used for text, the secondary colour was mainly used for when links or buttons are being hovered for contrast, and the accent was used for some text such as the username of the current logged-in user and which link in the navigation bar is active.
+    - Colours: The colours I have used for this website are outlined in the screenshot below. This colour scheme was developed by [Logo.com](https://logo.com/homepage). The primary colour was mainly used for text, the secondary colour was mainly used for when links or buttons are being hovered for contrast, and the accent was used for some text such as the username of the current logged-in user and which link in the navigation bar is active.
 
      ![Screenshot of Yakker colour scheme](documentation/yakker-colourscheme.png)
 
@@ -287,7 +287,7 @@ Profile Page:
 
 ![Screenshot of Navigation Bar Mobile Screens](documentation/navbar-responsive.png)
 
-The navigation bar is created with React Bootstrap. Conditional rendering is used to see whether the user is logged-in or not. Depending on the logged in status, different links will appear. When the user is logged out, the user will see the option to log in, signup, and to read the 'About' of the website. When the user logs in, the user is able to see their username at the top of the screen (when clicking on it, user will be directed to their detailed page where they can edit their details), the option to go to 'Feed' (see all posts by their followed users), create a post, go to 'Reyakked' (see posts they have liked), and log out. The navigation bar is fixed at the top so it will always remain readily available when users scroll down the website. The pages are wired using React Router Dom so the navigation process is extremely quick. The active link will be black in contrast to the other links so the user knows exactly which page they are on. The navigation bar is fully responsive as it collapses into a hamburger icon on smaller screens. Users can easily log out of the website by clicking the 'Log Out' link that appears when users are signed in. The navbar was broken down into different components as each link is it's own React file. 
+The navigation bar is created with React Bootstrap. Conditional rendering is used to display different links depending on if the user is logged-in or not. Depending on the logged in status, different links will appear. When the user is logged out, the user will see the option to log in, signup, and to read the 'About' of the website. When the user logs in, the user is able to see their username at the top of the screen (when clicking on it, user will be directed to their detailed page where they can edit their details), the option to go to 'Feed' (see all posts by their followed users), create a post, go to 'Reyakked' (see posts they have liked), and log out. The navigation bar is fixed at the top so it will always remain readily available when users scroll down the website. The pages are wired using React Router Dom so the navigation process is extremely quick. The active link will be black in contrast to the other links so the user knows exactly which page they are on. The navigation bar is fully responsive as it collapses into a hamburger icon on smaller screens. Users can easily log out of the website by clicking the 'Log Out' link that appears when users are signed in. The navbar was broken down into different components as each link is it's own React file. 
 
 User stories covered: 
 
@@ -307,7 +307,7 @@ User stories covered:
 
 ![Screenshot of About Page](documentation/aboutpage.png)
 
-The 'About' page is created so new users will immediately be able to learn the purpose of Yakker and what Yakker is used for. The 'About' page also explains the different terms (yakfile for profile, reyakk for like). For logged-in users, the 'About' page serves a useful purpose as it explains what the Feed page is for, and what the Reyakked page is for. Users will be reminded of the functionality of the website such as the capability of being able to edit/delete posts and comments, not being able to reyakk to their own posts/comments, the character limit of titles and content, etc. All of the information a new user or returning user would possibly need will be found on this page.
+The 'About' page is created so new users will immediately be able to learn the purpose of Yakker and what Yakker is used for. The 'About' page also explains the different terms (yakfile for profile, reyakk for like). For logged-in users, the 'About' page serves a useful purpose as it explains what the 'Feed' page is for, and what the 'Reyakked' page is for. Users will be reminded of the functionality of the website such as the capability of being able to edit/delete posts and comments, not being able to reyakk to their own posts/comments, the character limit of titles and content, etc. All of the information a new user or returning user would possibly need will be found on this page.
 
 User stories covered: 
 
@@ -321,7 +321,7 @@ User stories covered:
 
 ![Screenshot of Sign Up Page Validation](documentation/signuppage-validate.png)
 
-The login page and sign-up page are two separate pages where users can log in with an existing account or create a new account. The authentication and account creation is handled in the back end using Django all-auth. Form validation is in place on the sign-up page where all fields are required. Form validation is also in place where the user must put in the same password twice when confirming the creation of their password. An email address is not required for signing up, which is a very important feature of Yakker as we want our users to feel protected. When users are logged in, their logged-in status will remain for twenty-four hours thanks to axios intereceptors. The users will not have to constantly log back in when being away from the website for a few hours, which greatly enhances user experience and will keep users more engaged. If a logged-in user tries to access the sign-up or log-in pages, they will be automatically redirected to homepage. 
+The login page and sign-up page are two separate pages where users can log in with an existing account or sign up to create a new account. The authentication and account creation is handled in the back end using Django all-auth. Form validation is in place in the sign-up page where all fields are required. Form validation is also in place where the user must put in the same password twice when confirming the creation of their password. An email address is not required for signing up, which is a very important feature of Yakker as we want our users to feel protected. When users are logged in, their logged-in status will remain for twenty-four hours thanks to axios intereceptors. The users will not have to constantly log back in when being away from the website for a few hours, which greatly enhances user experience and will keep users more engaged. If a logged-in user tries to access the sign-up or log-in pages, they will be automatically redirected to homepage. 
 
 User stories covered: 
 
@@ -335,7 +335,7 @@ User stories covered:
 
 ![Screenshot of 404 page](documentation/404-page.png)
 
-If the user accesses a url that does not exist, the user will be automatically redirected to a 404 page with a gif of Kermit the Frog. The user will always reach this page when typing in an invalid url within the Yakker domain, thanks to React Router Dom's routes. 
+If the user accesses a url that does not exist, the user will be automatically redirected to a 404 page with a gif of Kermit the Frog. The user will always reach this page when typing in an invalid url within the Yakker domain, thanks to React Router Dom's routes. Clicking on 'go back' will redirected user to the previous page they were on.
 
 User stories covered:
 
@@ -345,7 +345,7 @@ User stories covered:
 
 ![Screenshot of 500 page](documentation/500-page.png)
 
-Nothing is perfect, and nothing will run smoothly forever. That's why it is very important to create a 500 page for if there are ever problems with the server or back end. Users deserve to have a good, custom-made webpage to be redirected to if there's a problem with our end. That's why I have created a custom 500 page for if the server or back end ever has any issues, they will be redirected here. I have added navigation to this 500 page in the catch(err) portion of async functions throughout the project. 
+Nothing is perfect, and nothing will run smoothly forever. That's why it is very important to create a 500 page for if there are ever problems with the server or back end. Users deserve to have a good, custom-made webpage to be redirected to if there's a problem with our end. That's why I have created a custom 500 page for if the server or back end ever has any issues, they will be redirected here. I have added navigation to this 500 page in the catch(err) portion of async functions throughout the project. Clicking on 'go back' will redirected user to the previous page they were on.
 
 User stories covered:
 
@@ -360,9 +360,10 @@ User stories covered:
 ![Screenshot of popular yakfiles smaller screens](documentation/popularyakfiles-smallerscreen.png)
 
 On the homepage of the website, the list of posts will be visible. Users will be able to browse all posted posts (newest first) and be able to see how many reyakks or comments each post has. Users can see who posted each post (with the avatar included), the date of each post, the photo, title, and content of each post. Users will be able to access the author's profile page by clicking on the avatar and username of the posted author. Users will be directed to a detailed view of the page when clicking on the post title. 
-There is also a search bar at the top, where users are able to search posts based on content, title, and author. This will help users to be able to search for specific posts they are looking for or posts by a specific author. Logged-in users will be able to see 'edit' and 'delete' icons on their own posts and will be able to access these links from the homepage. When users click the 'delete; icon, the post will be deleted. Users will only be able to delete their own posts. The functionality of post-editing will be discussed later. Logged-in users will be able to reyakk/unreyakk to other users' posts by clicking on the heart that is available. Functionality on post reyakks will be discussed later. 
-Users will be able to see the most popular Yakfiles on the right-hand side of larger screens, and at the top of the page on smaller screens. The popular yakfiles will be listed with their avatar and username. The usernames and avatars are clickable and will redirect users to their profile page. Popular yakfiles will be present on all pages except for the 'About', 'Sign Up', 'Create Post', and 'Log in' pages. Logged in users will be able to view the option to follow/unfollow other users. The follow functionality will be touched in the 'Follower' section. 
+There is also a search bar at the top, where users are able to search posts based on content, title, and author. This will help users to be able to search for specific posts they are looking for or posts by a specific author. Logged-in users will be able to see 'edit' and 'delete' icons on their own posts and will be able to access the link to edit their posts, and the link to delete their post. When users click the 'delete' icon, the post will be deleted. Users will only be able to delete their own posts. The functionality of post-editing will be discussed later. Logged-in users will be able to reyakk/unreyakk to other users' posts by clicking on the heart that is available. Functionality on post reyakks will be discussed later. 
+Users will be able to see the most popular Yakfiles on the right-hand side of larger screens, and at the top of the page on smaller screens. The popular yakfiles will be listed with their avatar and username. The usernames and avatars are clickable and will redirect users to the respective profile page. Popular yakfiles will be present on all pages except for the 'About', 'Sign Up', 'Create Post', and 'Log in' pages. Logged in users will be able to view the option to follow/unfollow other users. The follow functionality will be touched in the 'Follower' section. 
 Infinite scroll is incorporated in the homepage to allow users to be able to scroll to view posts without having to navigate back and forth pages to see more posts. This enhances user experience greatly as users will be able to stay more engaged with the website without having to click extra links.
+The homepage is made up of many different React components. The homepage includes the React files of showing Popular Yakfiles and also the React files of listing all posts. 
 
 User stories covered:
 
@@ -392,7 +393,7 @@ User stories covered:
 
 A footer is fixed at the bottom of all pages that is consistent with the styling of the website. The footer is always available so users can see who the creator of this website is. The user is able to go to their GitHub which opens in a separate tab. 
 
-- Detailed Post Page (Minus Comments Section) / Editing Posts
+**Detailed Post Page (Minus Comments Section) / Editing Posts**
 
 ![Screenshot of detailed post page](documentation/detailedpostpage.png)
 
@@ -400,7 +401,8 @@ A footer is fixed at the bottom of all pages that is consistent with the styling
 
 ![Screenshot of detailed post editing](documentation/detailedpostpage-editing.png)
 
-When clicking on the title of the post on the homepage, users will be redirected to the detailed view of the post. Here, users will be able to scroll down and view all comments posted on the post. The functionality of comments will be discussed later. The author of the post will be able to view the 'edit' and 'delete' icons at the top of the post. When clicking 'edit', users will be redirected to the edit link where the form is pre-populated with the contents. Users will be able to change their post, including changing the image if they wish, and save. If they wish to cancel, they will be redirected to the previous link (editing the post is also accessible from homepage when the user sees a post they have posted). Users will be able to reyakk and unreyakk to user posts from here by clicking on the hearts. Further functionality on post reyakks will be discussed later. Users will only be able to edit their own posts. If a different user tries to tamper with the url to edit another user's post, they will be redirected to the homepage. 
+When clicking on the title of the post on the homepage, users will be redirected to the detailed view of the post. Here, users will be able to scroll down and view all comments posted on the post. The functionality of comments will be discussed later. The detailed post page has the same information about the page as it is displayed in the homepage, with the username of the author, updated at date, post title, content, and image. The author of the post is clickable to be directed to the user's profile page. The author of the post will be able to view the 'edit' and 'delete' icons at the top of the post. When clicking 'edit', users will be redirected to the edit link where the form is pre-populated with the contents. Users will be able to change their post, including changing the image if they wish, and save. If they wish to cancel, they will be redirected to the previous link (editing the post is also accessible from homepage when the user sees a post they have posted). Logged-in users will be able to reyakk and unreyakk to other user posts from here by clicking on the hearts. Further functionality on post reyakks will be discussed later. Users will only be able to edit their own posts. If a different user tries to tamper with the url to edit another user's post, they will be redirected to the homepage.
+The detailed post page consists of Popular Yakfiles React files, Post React files, and Comment React files. 
 
 User stories covered:
 
@@ -418,7 +420,7 @@ User stories covered:
 
 7. As a **user** I can **view user avatars** so that **easily identify users of the website.**
 
-- Full Functionality of Comments Section
+**Full Functionality of Comments Section**
 
 ![Screenshot of comment section with comments](documentation/comment-comments.png)
 
@@ -434,7 +436,7 @@ User stories covered:
 
 ![Screenshot of comment section comment reyakks author](documentation/commentreyakks-author.png)
 
-All comments (newest first) on a specific post are viewed on the detailed view of the post. The comments will show the username, the date of the comment, how many reyakks the comment has, and the avatar of the user. Depending on users' logged-in status and whether comments are already available or not, different messages will appear. If there are no comments and the user is logged out, the comment section will encourage the user to log in or sign up to comment. If there are no comments and the user is logged in, the comment section will encourage the user to comment. Logged-in users will be able to post a comment and add their content. Authors of the comment will be able to view the 'edit' and 'delete' icons. When clicking 'delete', the user's comment will be immediately deleted. When 'edit' is clicked, users can change their comments with the content pre-populated. Users will be able to reyakk or unreyakk to other users' comments. If the author tries to reyakk to their own comment, a message will show stating that they are not able to. The comment section has infinite scroll incorporated so users will be able to stay engaged to the comments without having to click extra navigation buttons. Users can click on the avatar or username of the commenter and be directed to their profile page. Users will only be able to delete and edit their own comments. 
+All comments (newest first) commented on a specific post are viewed on the detailed view of the post. The comments will show the username, the date of the comment, how many reyakks the comment has, and the avatar of the user. Depending on users' logged-in status and whether comments are already available or not, different messages will appear. If there are no comments and the user is logged out, the comment section will encourage the user to log in or sign up to comment. If there are no comments and the user is logged in, the comment section will encourage the user to comment. Logged-in users will be able to post a comment and add their content. Authors of the comment will be able to view the 'edit' and 'delete' icons. When clicking 'delete', the user's comment will be immediately deleted. When 'edit' is clicked, users can change their comments with the content form pre-populated. Users will be able to reyakk or unreyakk to other users' comments. If the author tries to reyakk to their own comment, a message will show stating that they are not able to. The comment section has infinite scroll incorporated so users will be able to stay engaged to the comments without having to click extra navigation buttons. Users can click on the avatar or username of the commenter and be directed to their profile page. Users will only be able to delete or edit their own comments. 
 
 **User stories covered**
 
@@ -464,7 +466,7 @@ All comments (newest first) on a specific post are viewed on the detailed view o
 
 ![Screenshot of post reyakks author reyakking self](documentation/postreyakks-author.png)
 
-Logged-in users will be able reyakk to other users' posts. Reyakking and unreyakking to other users' posts can be done from the homepage or detailed post view. Users can reyakk to posts by clicking on the heart icon, which will turn red when reyakked. If the user clicks on the heart icon again, it will be unreyakked and go back to a colourless heart. If users try to reyakk to their own posts, a message will pop up stating that users cannot reyakk to their own posts. 
+Logged-in users will be able reyakk to other users' posts. Reyakking and unreyakking to other users' posts can be done from the homepage, detailed post view, or user profile page. Users can reyakk to posts by clicking on the heart icon, which will turn red when reyakked. If the user clicks on the heart icon again, it will be unreyakked and go back to a colourless heart. If users try to reyakk to their own posts, a message will pop up stating that users cannot reyakk to their own posts. 
 Users will be able to access all the posts that they have reyakked to in the "Reyakked" link in nav bar.
 
 User stories covered:
@@ -481,7 +483,7 @@ User stories covered:
 
 ![Screenshot of post create page validation](documentation/createpost-validation.png)
 
-Logged-in users will be able to create posts by clicking on the 'Create Post' icon in the nav bar. If logged-out users try to access this url, they will automatically be redirected to homepage. On the Create Post page, users will be able to add their image, add a title, and add content. If the user tries to submit the form without adding a photo or title, messages will show to the user explaining the issue. The image upload will only accept image files, and images smaller than 2500px in width and in height, and less than 1MB thanks to the back end set-up for posts. 
+Logged-in users will be able to create posts by clicking on the 'Create Post' icon in the nav bar. If logged-out users try to access this url, they will automatically be redirected to homepage. On the Create Post page, users will be able to add their image, add a title, and add content. If the user tries to submit the form without adding a photo or title, messages will show to the user explaining the issue. The image upload will only accept image files, and images smaller than 2500px in width and in height, and less than 1MB thanks to the back end set-up for posts. If logged-out users try to access this page, they will be redirected to homepage.
 
 User stories covered:
 
@@ -493,7 +495,7 @@ User stories covered:
 
 ![Screenshot of follower feature from yakfile page](documentation/follower-yakfilepage.png)
 
-Logged-in users will have the functionality of being able to follow other users. In the screenshot above, the user is logged in as BobTheYak. The user will not have the follow button available for BobTheYak as users will not be able to follow themselves. If the user is NOT following a user already, a 'Follow' button will pop up beside usernames. If the user IS following a user already, an 'Unfollow' button will appear instead. Users will be able to access following users from the Popular Yakfiles section, or in the detailed page of yakfiles. 
+Logged-in users will have the functionality of being able to follow other users. In the screenshot above, the user is logged in as BobTheYak. The user will not have the follow button available for BobTheYak as users will not be able to follow themselves. If the user is NOT following a user already, a 'Follow' button will pop up beside the username. If the user IS following a user already, an 'Unfollow' button will appear instead. Users will be able to follow other users from the Popular Yakfiles section, or on the profile pages of other users.
 Users will be able to see all posts posted by their followed users in the "Feed" link in the navigation bar. 
 
 User stories covered:
@@ -514,7 +516,7 @@ User stories covered:
 
 ![Screenshot of yakfilepage-other](documentation/yakfilepage-other.png)
 
-On the detailed yakfile page, users are able to view further details about the user such as how many followers they have, how many users they are following, and how many posts they have posted. Users are able to view all posts the speciifc user has posted, with infinite scroll incorporated. Users also have access to reyakk or unreyakk to other users' posts from detailed profile page. When the user views their own profile, they will see icons at the top right corner of being able to change their yakfile content, username or password. If the user wishes to change yakfile content, the fields are pre-populated where users can change their avatar photo or 'about me' section. When a user views the detailed yakfile page of another user, the top right corner is placed with a 'Follow' or 'Unfollow' button instead. 
+On the detailed yakfile page, users are able to view further details about the user such as how many followers they have, how many users they are following, and how many posts they have posted. Users are able to view all posts the specific user has posted, with infinite scroll incorporated. Users also have access to reyakk or unreyakk to other users' posts from profile page. When the user views their own profile, they will see icons at the top right corner of being able to change their yakfile content, username or password. If the user wishes to change yakfile content, the fields are pre-populated where users can change their avatar photo or 'about me' section. When a user views the detailed yakfile page of another user, the top right corner is placed with a 'Follow' or 'Unfollow' button instead. Users are able to change their username and changes will apply immediately once successful as all posts will be changed to the changed username as the author. The form will ensure the user is not selecting a username that already exists or else a message will show. If the user tries to change their password, the form will ensure the user is typing in the same password twice as confirmation. 
 
 User stories covered:
 
@@ -532,7 +534,7 @@ User stories covered:
 
 ### Future Features
 
-- In the future, I would like to include the user's age in days as this is added as a serializer in the back end.
+- In the future, I would like to include the user's age in days on the profile page as this is added as a serializer in the back end. Users would be able to keep track how long their account has been active for. 
 - In the future, I wish to include a feature where users can private message each other so users can stay more connected.
 - In the future, I wish to include a feature where users can target specific users in their comments section by add '@'.
 - In the future, I wish to include a feature where users can add images to their comments.
@@ -551,6 +553,10 @@ User stories covered:
 4. [JavaScript](https://www.javascript.com/)
 
 5. [React Bootstrap](https://react-bootstrap.github.io/)
+
+6. [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component)
+
+7. [React Router](https://v5.reactrouter.com/web/guides/philosophy)
 
 ### Programs Used
 
@@ -592,12 +598,6 @@ User stories covered:
 
 13. [Logo](https://logo.com/homepage)
     - Logo was used to create the logo for this website and to get the colour scheme.
-
-14. [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component)
-    - React infinite scroll was used for the infinite scroll capability of posts and comments. 
-
-15. [React Router](https://v5.reactrouter.com/web/guides/philosophy)
-    - React Router was used for crucial navigation of the website. 
 
 ## Testing
 
