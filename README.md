@@ -631,7 +631,7 @@ User stories covered:
 
 **Homepage Tests**
 
-- Infinite scroll successfully works as the page will load when more than ten posts are present.
+- Infinite scroll successfully works as the page will produce more posts when more than ten posts are present.
 - The lists of posts are all shown, with the author, date updated, author avatar, post title, image, content, number of reyakks and comments present.
 - Author and avatar of posts are able clickable and will redirect user to profile page of that user.
 - If user is logged out, hovering over reyakk button will prompt user to log in.
@@ -677,7 +677,7 @@ User stories covered:
 - Users are successfully able to delete their comments and edit their comments.
 - Only authors of the comment can view the icons where they can edit or delete.
 - Deleted comments are deleted immediately.
-- Edited comments are pre-populated with the comment content. 
+- Edited comments are pre-populated with the comment content. Edited changes will show immediately after saving.
 
 **Follower Tests**
 
